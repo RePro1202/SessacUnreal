@@ -82,7 +82,11 @@ DerivedDataCache/*
 *.vsconfig
 
 
-*/Content/ParagonGideon
+*/Content/ParagonGideon/Audio
+*/Content/ParagonGideon/FX
+*/Content/ParagonGideon/Characters/Global
+*/Content/ParagonGideon/Characters/Maps
+
 */Content/NaturePackage
 */Content/ControlRig
 */Content/MSPresets
