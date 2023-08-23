@@ -11,7 +11,13 @@ AMagicianCharacter::AMagicianCharacter()
 
 	if (MeshAsset.Succeeded())
 	{
-		// 위에서 불러온 SkeletalMesh를 
+		// 위에서 불러온 SkeletalMesh를 Character 클래스가 가지고 있는
+		// SkeletalMeshComponent에 지정해준다.
 		GetMesh()->SetSkeletalMesh(MeshAsset.Object);
 	}
+
+	GetCapsuleComponent()->SetCapsuleHalfHeight(92.f);
+	GetMesh()->SetRelativeLocation(FVector(0.0, 0.0, -92.0));
+	GetMesh()->SetRelativeRotation(FRotator(0.0, -90.0, 0.0));
+
 }
