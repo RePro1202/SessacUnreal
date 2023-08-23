@@ -14,4 +14,6 @@ class FIRSTPROJECT_API AFirstProjectGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	AFirstProjectGameModeBase();
 };
