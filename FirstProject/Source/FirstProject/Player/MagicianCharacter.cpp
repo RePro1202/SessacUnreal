@@ -16,6 +16,15 @@ AMagicianCharacter::AMagicianCharacter()
 		GetMesh()->SetSkeletalMesh(MeshAsset.Object);
 	}
 
+	// Animation Blueprint 클래스 레퍼런스를 얻어온다.
+	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimClass(TEXT("/Script/Engine.AnimBlueprint'/Game/Player/AB_Magician.AB_Magician_C'"));
+
+	if (AnimClass.Succeeded())
+	{
+		GetMesh()->SetAnimInstanceClass(AnimClass.Class);
+	}
+
+
 	GetCapsuleComponent()->SetCapsuleHalfHeight(92.f);
 	GetMesh()->SetRelativeLocation(FVector(0.0, 0.0, -92.0));
 	GetMesh()->SetRelativeRotation(FRotator(0.0, -90.0, 0.0));
