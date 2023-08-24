@@ -25,6 +25,8 @@ protected:
 	bool mCameraRotationEnable;
 	FRotator mOriginSpringArmRotator;
 
+	TObjectPtr<class UPlayerAnimInstance> mPlayerAnimInstance;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

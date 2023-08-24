@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "PlayerAnimInstance.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -27,7 +28,11 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	// SkeletalMesh는 GetAnimInstance 함수를 지원해주고 있다.
+	// 이 함수는 SkeletalMesh에 지정된 AnimInstance 클래스를 이용해서 생성한 객체를 가지고 있다.
+	// GetAnimInstance 함수는 바로 이 객체를 꺼내오는 함수이다.
+	mPlayerAnimInstance = Cast<UPlayerAnimInstance>(GetMesh()->GetAnimInstance());
 }
 
 // Called every frame
@@ -127,6 +132,12 @@ void APlayerCharacter::RotationCameraReleased()
 
 void APlayerCharacter::JumpKey()
 {
+	// 점프 가능 상태인지 체크한다.
+	if (CanJump())
+	{
+		Jump();
+		mPlayerAnimInstance->ChangeAnim(EPlayerAnimType::Jump);
+	}
 }
 
 void APlayerCharacter::AttackKey()
