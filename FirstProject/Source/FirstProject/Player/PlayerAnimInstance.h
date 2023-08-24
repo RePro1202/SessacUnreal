@@ -53,4 +53,16 @@ public:
 
 	virtual void NativeBeginPlay();
 
+public:
+	// 노티파이 함수는 리턴타입은 void 이고 AnimNotify_노티파이이름() 
+	// 의 형태로 함수를 제작해야 한다.
+
+	UFUNCTION()
+	void AnimNotify_TransitionFall();
+
+	UFUNCTION()
+	void AnimNotify_LandEnd();
+
+	UFUNCTION()
+	void RecorverEnd();
 };

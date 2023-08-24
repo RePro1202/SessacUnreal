@@ -8,6 +8,7 @@ UPlayerAnimInstance::UPlayerAnimInstance()
 {
 	mAnimType = EPlayerAnimType::Default;
 	mOnGround = false;
+	mMoveSpeed = 0.f;
 }
 
 void UPlayerAnimInstance::NativeInitializeAnimation()
@@ -15,7 +16,6 @@ void UPlayerAnimInstance::NativeInitializeAnimation()
 	// 부모클래스의 NativeInitializeAnimation()를 먼저 호출해준다.
 	// Super : 부모클래스를 의미한다.
 	Super::NativeInitializeAnimation();
-
 
 }
 
@@ -37,6 +37,11 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 			mMoveSpeed = Movement->Velocity.Length();
 			mOnGround = Movement->IsMovingOnGround();
 		}
+	}
+
+	if (!mOnGround && mAnimType != EPlayerAnimType::Jump && mAnimType != EPlayerAnimType::Fall)
+	{
+		mAnimType = EPlayerAnimType::Fall;
 	}
 
 	// IsValid : 객체가 유효한지 검사한다.
@@ -70,4 +75,19 @@ void UPlayerAnimInstance::NativeUninitializeAnimation()
 void UPlayerAnimInstance::NativeBeginPlay()
 {
 	Super::NativeBeginPlay();
+}
+
+void UPlayerAnimInstance::AnimNotify_TransitionFall()
+{
+	mAnimType = EPlayerAnimType::Fall;
+}
+
+void UPlayerAnimInstance::AnimNotify_LandEnd()
+{
+	mAnimType = EPlayerAnimType::Default;
+}
+
+void UPlayerAnimInstance::RecorverEnd()
+{
+	mAnimType = EPlayerAnimType::Default;
 }
