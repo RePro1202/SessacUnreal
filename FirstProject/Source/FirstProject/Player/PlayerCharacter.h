@@ -23,6 +23,7 @@ protected:
 	TObjectPtr<UCameraComponent> mCamera;
 
 	bool mCameraRotationEnable;
+	FRotator mOriginSpringArmRotator;
 
 protected:
 	// Called when the game starts or when spawned

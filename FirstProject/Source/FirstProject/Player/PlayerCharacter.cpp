@@ -19,7 +19,7 @@ APlayerCharacter::APlayerCharacter()
 	mCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	mCamera->SetupAttachment(mSpringArm);
 
-
+	mOriginSpringArmRotator = mSpringArm->GetRelativeRotation();
 	mCameraRotationEnable = false;
 }
 
@@ -89,7 +89,21 @@ void APlayerCharacter::RotationCharacterPitch(float Scale)
 	{
 		float Rot = GetWorld()->GetDeltaSeconds() * 180.f * Scale;
 
-		mSpringArm->AddRelativeRotation(FRotator((double)Rot, 0.0, 0.0));
+		FRotator CurrentSpringArmRotation = mSpringArm->GetRelativeRotation();
+		float AfterCameraPitch = Rot + CurrentSpringArmRotation.Pitch;
+
+		if (AfterCameraPitch >= -50.f && AfterCameraPitch <= 10)
+		{
+			mSpringArm->AddRelativeRotation(FRotator((double)Rot, 0.0, 0.0));
+		}
+		else if (AfterCameraPitch < -50.f)
+		{
+			mSpringArm->SetRelativeRotation(FRotator(-50.f, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
+		}
+		else if (AfterCameraPitch > 10)
+		{
+			mSpringArm->SetRelativeRotation(FRotator(10.f, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
+		}
 	}
 }
 
@@ -107,6 +121,7 @@ void APlayerCharacter::RotationCamera()
 
 void APlayerCharacter::RotationCameraReleased()
 {
+	mSpringArm->SetRelativeRotation(mOriginSpringArmRotator);
 	mCameraRotationEnable = false;
 }
 
@@ -117,4 +132,3 @@ void APlayerCharacter::JumpKey()
 void APlayerCharacter::AttackKey()
 {
 }
-
