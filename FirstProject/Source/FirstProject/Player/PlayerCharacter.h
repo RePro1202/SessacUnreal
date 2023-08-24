@@ -16,6 +16,13 @@ public:
 	APlayerCharacter();
 
 protected:
+	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<USpringArmComponent> mSpringArm;
+
+	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UCameraComponent> mCamera;
+
+protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
