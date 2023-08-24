@@ -22,6 +22,8 @@ protected:
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UCameraComponent> mCamera;
 
+	bool mCameraRotationEnable;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -32,5 +34,17 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+private:
+	void MoveFront(float Scale);
+	void MoveSide(float Scale);
+	void RotationCharacterYaw(float Scale);
+	void RotationCharacterPitch(float Scale);
+	void CameraZoom(float Scale);
+
+	void RotationCamera();
+	void RotationCameraReleased();
+	void JumpKey();
+	void AttackKey();
 
 };
