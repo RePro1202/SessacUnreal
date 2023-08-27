@@ -95,21 +95,27 @@ void APlayerCharacter::RotationCharacterPitch(float Scale)
 		float Rot = GetWorld()->GetDeltaSeconds() * 180.f * Scale;
 
 		FRotator CurrentSpringArmRotation = mSpringArm->GetRelativeRotation();
-		float AfterCameraPitch = Rot + CurrentSpringArmRotation.Pitch;
+		float NewSpringArmPitch = Rot + CurrentSpringArmRotation.Pitch;
 
-		if (AfterCameraPitch >= -50.f && AfterCameraPitch <= 10)
+		if (NewSpringArmPitch >= -50.f && NewSpringArmPitch <= 10)
 		{
 			mSpringArm->AddRelativeRotation(FRotator((double)Rot, 0.0, 0.0));
 		}
-		else if (AfterCameraPitch < -50.f)
+		else if (NewSpringArmPitch < -50.f)
 		{
 			mSpringArm->SetRelativeRotation(FRotator(-50.f, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
 		}
-		else if (AfterCameraPitch > 10)
+		else if (NewSpringArmPitch > 10)
 		{
 			mSpringArm->SetRelativeRotation(FRotator(10.f, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
 		}
 	}
+}
+
+void APlayerCharacter::RestrictPitch(float Pitch)
+{
+	if(Pitch < -50.f)
+
 }
 
 void APlayerCharacter::CameraZoom(float Scale)

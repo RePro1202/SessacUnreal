@@ -43,6 +43,7 @@ private:
 	void MoveSide(float Scale);
 	void RotationCharacterYaw(float Scale);
 	void RotationCharacterPitch(float Scale);
+	void RestrictPitch(float Pitch);
 	void CameraZoom(float Scale);
 
 	void RotationCamera();
