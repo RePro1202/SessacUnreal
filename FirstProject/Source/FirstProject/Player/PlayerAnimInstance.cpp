@@ -13,6 +13,9 @@ UPlayerAnimInstance::UPlayerAnimInstance()
 	mFallRecoveryAdditive = 0.f;
 	mAttackEnable = true;
 	mAttackIndex = 0;
+
+	mFallLandPosition = 0.14f;
+	mCanJump = true;
 }
 
 void UPlayerAnimInstance::Attack()
@@ -33,6 +36,23 @@ void UPlayerAnimInstance::Attack()
 	// 배열.Num() 배열의 수.
 	mAttackIndex = (mAttackIndex + 1) % mAttackMontage.Num();
 
+}
+
+void UPlayerAnimInstance::Jump()
+{
+	if (Montage_IsPlaying(mFallRecovery))
+	{
+		mFallRecoveryAdditive = 0.f;
+		Montage_Stop(0.1f, mFallRecovery);
+	}
+
+	mCanJump = false;
+	mAnimType = EPlayerAnimType::Jump;
+}
+
+bool UPlayerAnimInstance::CanJump()
+{
+	return mCanJump;
 }
 
 void UPlayerAnimInstance::NativeInitializeAnimation()
@@ -73,7 +93,8 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 			mAttackEnable = false;
 		}
 
-		// 땅을 밝고 있는 상태이고 애니메이션이 Fall일 경우 이제 막 땅을 밟게 되었다는 것임으로 공격을 활성화한다.
+		// 땅을 밝고 있는 상태이고 애니메이션이 Fall일 경우 이제 막 땅을 밟게 되었다는 
+		// 것 임으로 공격을 활성화한다.
 		if (mOnGround && mAnimType == EPlayerAnimType::Fall)
 		{
 			mAttackEnable = true;
@@ -131,6 +152,8 @@ void UPlayerAnimInstance::AnimNotify_LandEnd()
 	Montage_SetPosition(mFallRecovery, 0.f);
 
 	Montage_Play(mFallRecovery);
+
+	mCanJump = true;
 }
 
 void UPlayerAnimInstance::AnimNotify_RecorverEnd()

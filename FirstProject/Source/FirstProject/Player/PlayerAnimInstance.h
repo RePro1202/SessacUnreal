@@ -43,8 +43,12 @@ protected:
 	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	TArray<TObjectPtr<UAnimMontage>> mAttackMontage;
 
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	float mFallLandPosition;
+
 	bool mAttackEnable;
 	int32 mAttackIndex;
+	bool mCanJump;
 
 public:
 	void ChangeAnim(EPlayerAnimType AnimType)
@@ -53,6 +57,8 @@ public:
 	}
 
 	void Attack();
+	void Jump();
+	bool CanJump();
 	
 public:
 	virtual void NativeInitializeAnimation();

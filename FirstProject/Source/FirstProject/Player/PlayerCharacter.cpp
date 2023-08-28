@@ -144,10 +144,10 @@ void APlayerCharacter::RotationCameraReleased()
 void APlayerCharacter::JumpKey()
 {
 	// 점프 가능 상태인지 체크한다.
-	if (CanJump())
+	if (CanJump() && mPlayerAnimInstance->CanJump())
 	{
 		Jump();
-		mPlayerAnimInstance->ChangeAnim(EPlayerAnimType::Jump);
+		mPlayerAnimInstance->Jump();
 	}
 }
 
