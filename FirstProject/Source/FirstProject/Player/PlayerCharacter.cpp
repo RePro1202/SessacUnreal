@@ -24,6 +24,8 @@ APlayerCharacter::APlayerCharacter()
 	mCameraRotationEnable = false;
 
 	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Player"));
+	GetCapsuleComponent()->OnComponentHit;
+	// 
 	//GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 }
 
