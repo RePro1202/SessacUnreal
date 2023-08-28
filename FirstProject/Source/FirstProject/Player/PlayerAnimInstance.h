@@ -25,20 +25,34 @@ public:
 	UPlayerAnimInstance();
 
 protected:
-	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	float mMoveSpeed;
 
-	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	EPlayerAnimType mAnimType;
 
-	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	bool mOnGround;
+
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	float mFallRecoveryAdditive;
+
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UAnimMontage> mFallRecovery;
+
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TArray<TObjectPtr<UAnimMontage>> mAttackMontage;
+
+	bool mAttackEnable;
+	int32 mAttackIndex;
 
 public:
 	void ChangeAnim(EPlayerAnimType AnimType)
 	{
 		mAnimType = AnimType;
 	}
+
+	void Attack();
 	
 public:
 	virtual void NativeInitializeAnimation();
@@ -64,5 +78,14 @@ public:
 	void AnimNotify_LandEnd();
 
 	UFUNCTION()
-	void RecorverEnd();
+	void AnimNotify_RecorverEnd();
+
+	UFUNCTION()
+	void AnimNotify_Attack();
+
+	UFUNCTION()
+	void AnimNotify_AttackEnable();
+
+	UFUNCTION()
+	void AnimNotify_AttackEnd();
 };
