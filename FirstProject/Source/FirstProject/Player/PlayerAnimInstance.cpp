@@ -44,6 +44,7 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		mAnimType = EPlayerAnimType::Fall;
 	}
 
+	/*
 	// IsValid : 객체가 유효한지 검사한다.
 	// nullptr일 경우 유효한 객체가 아니다.
 
@@ -55,6 +56,7 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	//checkf(Player != nullptr, TEXT("Player Cast Failed"));
 	
 	//check(Movement != nullptr);
+	*/
 }
 
 void UPlayerAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)

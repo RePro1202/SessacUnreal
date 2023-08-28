@@ -92,30 +92,35 @@ void APlayerCharacter::RotationCharacterPitch(float Scale)
 {
 	if (mCameraRotationEnable)
 	{
-		float Rot = GetWorld()->GetDeltaSeconds() * 180.f * Scale;
-
 		FRotator CurrentSpringArmRotation = mSpringArm->GetRelativeRotation();
-		float NewSpringArmPitch = Rot + CurrentSpringArmRotation.Pitch;
 
-		if (NewSpringArmPitch >= -50.f && NewSpringArmPitch <= 10)
+		float DeltaRotationPitch = GetWorld()->GetDeltaSeconds() * 180.f * Scale;
+		float NewSpringArmPitch = CurrentSpringArmRotation.Pitch + DeltaRotationPitch;
+		
+		if (!IsRestrictedPitch(NewSpringArmPitch, CurrentSpringArmRotation))
 		{
-			mSpringArm->AddRelativeRotation(FRotator((double)Rot, 0.0, 0.0));
-		}
-		else if (NewSpringArmPitch < -50.f)
-		{
-			mSpringArm->SetRelativeRotation(FRotator(-50.f, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
-		}
-		else if (NewSpringArmPitch > 10)
-		{
-			mSpringArm->SetRelativeRotation(FRotator(10.f, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
+			mSpringArm->AddRelativeRotation(FRotator((double)DeltaRotationPitch, 0.0, 0.0));
 		}
 	}
 }
 
-void APlayerCharacter::RestrictPitch(float Pitch)
+bool APlayerCharacter::IsRestrictedPitch(float Pitch, FRotator CurrentSpringArmRotation)
 {
-	if(Pitch < -50.f)
+	float minPitch = -50.f;
+	float maxPitch = 10.f;
 
+	if (Pitch < minPitch)
+	{
+		mSpringArm->SetRelativeRotation(FRotator(minPitch, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
+		return true;
+	}
+	else if (Pitch > maxPitch)
+	{
+		mSpringArm->SetRelativeRotation(FRotator(maxPitch, CurrentSpringArmRotation.Yaw, CurrentSpringArmRotation.Roll));
+		return true;
+	}
+
+	return false;
 }
 
 void APlayerCharacter::CameraZoom(float Scale)
