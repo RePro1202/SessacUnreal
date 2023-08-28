@@ -22,6 +22,9 @@ APlayerCharacter::APlayerCharacter()
 
 	mOriginSpringArmRotator = mSpringArm->GetRelativeRotation();
 	mCameraRotationEnable = false;
+
+	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Player"));
+	//GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 }
 
 // Called when the game starts or when spawned
