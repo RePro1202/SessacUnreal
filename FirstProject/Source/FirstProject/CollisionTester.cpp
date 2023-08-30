@@ -14,12 +14,18 @@ ACollisionTester::ACollisionTester()
 	mCapsule->OnComponentHit.AddDynamic(this, &ACollisionTester::Hit);
 	mCapsule->SetCollisionProfileName(TEXT("Test"));
 	SetRootComponent(mCapsule);
+	mCapsule->SetCapsuleHalfHeight(30.f);
+
 
 	mStaticMesh = CreateDefaultSubobject<UStaticMeshComponent>("staticMesh");
+
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/TMHighTechPack1/HighTech/meshes/Computer03/SM_Computer03.SM_Computer03'"));
+	if (MeshAsset.Succeeded())
+		mStaticMesh->SetStaticMesh(MeshAsset.Object);
+	
 	mStaticMesh->SetupAttachment(mCapsule);
-	mStaticMesh->SetStaticMesh(MeshAsset.Object);
 	mStaticMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	mStaticMesh->SetRelativeLocation(FVector(0.0, 0.0, -20.0));
 }
 
 // Called when the game starts or when spawned
