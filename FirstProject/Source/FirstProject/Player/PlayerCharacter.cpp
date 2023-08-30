@@ -25,6 +25,7 @@ APlayerCharacter::APlayerCharacter()
 
 	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Player"));
 
+
 	// 오버랩 이벤트 생성을 켜준다.
 	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
 
@@ -39,7 +40,6 @@ APlayerCharacter::APlayerCharacter()
 	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &APlayerCharacter::OverlapEnd);
 
 	GetCapsuleComponent()->CanCharacterStepUpOn = ECanBeCharacterBase::ECB_No;
-
 	//GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
