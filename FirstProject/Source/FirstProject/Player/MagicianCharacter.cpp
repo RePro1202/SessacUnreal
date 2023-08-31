@@ -50,6 +50,19 @@ void AMagicianCharacter::Attack1()
 
 	bool Collision = GetWorld()->SweepSingleByChannel(result, Start, End, FQuat::Identity, 
 		ECollisionChannel::ECC_EngineTraceChannel4, FCollisionShape::MakeSphere(50.f), param);
+
+	// 디버깅 용(에디터)으로 출력한다.
+#if ENABLE_DRAW_DEBUG
+
+	// Collision 값에 따라 true일 경우 red, false일 경우 green으로 출력한다.
+	FColor DrawColor = Collision ? FColor::Red : FColor::Green;
+
+	// FRotationMatrix::MakeFromZ(GetActorForwardVector()).ToQuat() : Z축을 캐릭터의 앞쪽으로 만들어주는
+	// 회전 행렬을 구한다. (FMatrix로 결과가 나온다) 그래서 .ToQuat를 이용해서 FQuat(회전값)으로 변환한다.
+	DrawDebugCapsule(GetWorld(), (Start + End) / 2, 100.f, 50.f,
+		FRotationMatrix::MakeFromZ(GetActorForwardVector()).ToQuat(), DrawColor, false, 10.f);
+
+#endif
 }
 
 void AMagicianCharacter::Attack2()

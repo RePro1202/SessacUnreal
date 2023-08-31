@@ -6,10 +6,13 @@
 #include "EngineMinimal.h"
 //#include "CoreMinimal.h"
 
+#include "DrawDebughelpers.h"
 #include "EngineGlobals.h"
 #include "Engine.h"
 
 #include "UObject/NoExportTypes.h"
+
+// generated해더 위에다 include해야함.
 #include "GameInfo.generated.h"
 
 // log 출력 관련 작업

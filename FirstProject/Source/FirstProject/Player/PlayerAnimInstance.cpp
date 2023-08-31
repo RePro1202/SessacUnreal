@@ -61,6 +61,7 @@ void UPlayerAnimInstance::Teleport()
 	Montage_SetPosition(mTeleportMontage, 0.f);
 	Montage_Play(mTeleportMontage);
 	
+	if (mTeleportAnimFlag) false;
 	mTeleportAnimFlag = true;
 }
 
