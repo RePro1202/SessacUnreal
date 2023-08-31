@@ -28,15 +28,12 @@ APlayerCharacter::APlayerCharacter()
 
 	// 오버랩 이벤트 생성을 켜준다.
 	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
-
 	// 시뮬레이션 히트 이벤트 생성을 켜준다.
 	GetCapsuleComponent()->SetNotifyRigidBodyCollision(true);
 
 	// OncomponetHit : Multicast + Dynamic 조합의 Delegate이다.
 	GetCapsuleComponent()->OnComponentHit.AddDynamic(this, &APlayerCharacter::BodyHit);
-	
 	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &APlayerCharacter::OverlapBegin);
-
 	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &APlayerCharacter::OverlapEnd);
 
 	GetCapsuleComponent()->CanCharacterStepUpOn = ECanBeCharacterBase::ECB_No;
@@ -83,6 +80,11 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &APlayerCharacter::JumpKey);
 	PlayerInputComponent->BindAction(TEXT("Attack"), EInputEvent::IE_Pressed, this, &APlayerCharacter::AttackKey);
 
+}
+
+void APlayerCharacter::WarpBackward(float Scale)
+{
+	AddActorWorldOffset(-GetActorForwardVector() * Scale);
 }
 
 void APlayerCharacter::MoveFront(float Scale)
@@ -181,7 +183,6 @@ void APlayerCharacter::BodyHit(UPrimitiveComponent* HitComponent, AActor* OtherA
 {
 	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Red, 
 		FString::Printf(TEXT("Dest : %s"), *OtherActor->GetName()));
-
 }
 
 void APlayerCharacter::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)

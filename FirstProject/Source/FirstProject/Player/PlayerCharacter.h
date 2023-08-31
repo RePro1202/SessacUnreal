@@ -38,6 +38,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+public:
+	void WarpBackward(float Scale);
+
 private:
 	void MoveFront(float Scale);
 	void MoveSide(float Scale);

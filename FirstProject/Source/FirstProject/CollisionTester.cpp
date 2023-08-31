@@ -2,6 +2,7 @@
 
 
 #include "CollisionTester.h"
+#include "Player/PlayerCharacter.h"
 
 // Sets default values
 ACollisionTester::ACollisionTester()
@@ -46,5 +47,8 @@ void ACollisionTester::Hit(UPrimitiveComponent* HitComponent, AActor* OtherActor
 	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Blue,
 		FString::Printf(TEXT("Dest : %s"), *OtherActor->GetName()));
 
+	APlayerCharacter* player = Cast<APlayerCharacter>(OtherActor);
+
+	player->WarpBackward(1000.f);
 }
 
