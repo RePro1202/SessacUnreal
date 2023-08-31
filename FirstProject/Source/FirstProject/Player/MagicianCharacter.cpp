@@ -30,3 +30,29 @@ AMagicianCharacter::AMagicianCharacter()
 	GetMesh()->SetRelativeRotation(FRotator(0.0, -90.0, 0.0));
 
 }
+
+void AMagicianCharacter::Attack1()
+{
+	// 근접 공격. 플레이어 전방으로 일정 거리만큼을 공격거리로 두고
+	// 공격 충돌체크를 진행한다.
+	// 
+	// Sweep과 Overlap 2가지 종류로 나뉜다.
+	// 여기서 Sweep과 Overlap은 Single과 Multi 2가지로 나뉜다.
+	// Single은 가장 먼저 충돌한 하나의 객체에, Multi는 충돌된 모든 물체에 대해 충돌.
+	// Trace 충돌채널을 이용해서 충돌을 진행한다.
+	// 이 함수는 반환값으로 충돌이 있을 경우 true, 없을 경우 false를 반환한다.
+
+	FVector Start = GetActorLocation() + GetActorForwardVector() * 50.f;
+	FVector End = Start + GetActorForwardVector() * 200.f;
+	FCollisionQueryParams param(NAME_None, false, this);
+
+	FHitResult result;
+
+	bool Collision = GetWorld()->SweepSingleByChannel(result, Start, End, FQuat::Identity, 
+		ECollisionChannel::ECC_EngineTraceChannel4, FCollisionShape::MakeSphere(50.f), param);
+}
+
+void AMagicianCharacter::Attack2()
+{
+
+}

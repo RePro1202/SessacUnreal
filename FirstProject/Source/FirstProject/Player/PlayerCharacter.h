@@ -70,4 +70,9 @@ private:
 	UFUNCTION()
 	void OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+
+public:
+	virtual void Attack1();
+	virtual void Attack2();
+
 };

@@ -58,6 +58,9 @@ bool UPlayerAnimInstance::CanJump()
 
 void UPlayerAnimInstance::Teleport()
 {
+	Montage_SetPosition(mTeleportMontage, 0.f);
+	Montage_Play(mTeleportMontage);
+	
 	mTeleportAnimFlag = true;
 }
 
@@ -167,7 +170,22 @@ void UPlayerAnimInstance::AnimNotify_RecorverEnd()
 
 void UPlayerAnimInstance::AnimNotify_Attack()
 {
+	APlayerCharacter* Player = Cast<APlayerCharacter>(TryGetPawnOwner());
 
+	if (IsValid(Player))
+	{
+		Player->Attack1();
+	}
+}
+
+void UPlayerAnimInstance::AnimNotify_Attack2()
+{
+	APlayerCharacter* Player = Cast<APlayerCharacter>(TryGetPawnOwner());
+
+	if (IsValid(Player))
+	{
+		Player->Attack2();
+	}
 }
 
 void UPlayerAnimInstance::AnimNotify_AttackEnable()
@@ -185,4 +203,3 @@ void UPlayerAnimInstance::AnimNotify_BackRingEnd()
 {
 	mTeleportAnimFlag = false;
 }
-

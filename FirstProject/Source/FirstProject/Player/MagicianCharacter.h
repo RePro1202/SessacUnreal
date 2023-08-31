@@ -16,4 +16,9 @@ class FIRSTPROJECT_API AMagicianCharacter : public APlayerCharacter
 public:
 	AMagicianCharacter();
 	
+
+
+public:
+	virtual void Attack1();
+	virtual void Attack2();
 };

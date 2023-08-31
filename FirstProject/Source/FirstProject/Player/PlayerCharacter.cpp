@@ -201,3 +201,11 @@ void APlayerCharacter::OverlapEnd(UPrimitiveComponent* OverlappedComponent, AAct
 		FString::Printf(TEXT("EndOverlap Dest : %s"), *OtherActor->GetName()));
 
 }
+
+void APlayerCharacter::Attack1()
+{
+}
+
+void APlayerCharacter::Attack2()
+{
+}

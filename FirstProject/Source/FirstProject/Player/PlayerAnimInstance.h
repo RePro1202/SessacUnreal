@@ -48,6 +48,12 @@ protected:
 	float mFallLandPosition;
 
 
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UAnimSequenceBase> mTeleporSeq;
+
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UAnimMontage> mTeleportMontage;
+
 	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	bool mTeleportAnimFlag;
 
@@ -95,6 +101,10 @@ public:
 
 	UFUNCTION()
 	void AnimNotify_Attack();
+
+	UFUNCTION()
+	void AnimNotify_Attack2();
+
 
 	UFUNCTION()
 	void AnimNotify_AttackEnable();
