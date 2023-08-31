@@ -49,7 +49,7 @@ protected:
 
 
 	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	bool mWarpFlag;
+	bool mTeleportAnimFlag;
 
 	bool mAttackEnable;
 	int32 mAttackIndex;
@@ -65,7 +65,7 @@ public:
 	void Attack();
 	void Jump();
 	bool CanJump();
-	void Warp();
+	void Teleport();
 	
 public:
 	virtual void NativeInitializeAnimation();

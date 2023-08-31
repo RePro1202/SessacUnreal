@@ -47,8 +47,8 @@ void ACollisionTester::Hit(UPrimitiveComponent* HitComponent, AActor* OtherActor
 	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Blue,
 		FString::Printf(TEXT("Dest : %s"), *OtherActor->GetName()));
 
-	APlayerCharacter* player = Cast<APlayerCharacter>(OtherActor);
 
-	player->TeleportBackward(1000.f);
+	APlayerCharacter* player = Cast<APlayerCharacter>(OtherActor);
+	player->TeleportBackward(500.f);
 }
 

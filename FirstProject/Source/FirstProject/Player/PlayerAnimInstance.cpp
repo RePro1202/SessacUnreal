@@ -17,7 +17,7 @@ UPlayerAnimInstance::UPlayerAnimInstance()
 	mFallLandPosition = 0.14f;
 	mCanJump = true;
 
-	mWarpFlag = false;
+	mTeleportAnimFlag = false;
 }
 
 void UPlayerAnimInstance::Attack()
@@ -56,9 +56,9 @@ bool UPlayerAnimInstance::CanJump()
 	return mCanJump;
 }
 
-void UPlayerAnimInstance::Warp()
+void UPlayerAnimInstance::Teleport()
 {
-	mWarpFlag = true;
+	mTeleportAnimFlag = true;
 }
 
 void UPlayerAnimInstance::NativeInitializeAnimation()
@@ -107,8 +107,6 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		}
 	}
 
-	
-
 	/*
 	// IsValid : 객체가 유효한지 검사한다.
 	// nullptr일 경우 유효한 객체가 아니다.
@@ -156,7 +154,6 @@ void UPlayerAnimInstance::AnimNotify_LandEnd()
 	mFallRecoveryAdditive = 1.f;
 
 	Montage_SetPosition(mFallRecovery, 0.f);
-
 	Montage_Play(mFallRecovery);
 
 	mCanJump = true;
@@ -186,6 +183,6 @@ void UPlayerAnimInstance::AnimNotify_AttackEnd()
 
 void UPlayerAnimInstance::AnimNotify_BackRingEnd()
 {
-	mWarpFlag = false;
+	mTeleportAnimFlag = false;
 }
 
