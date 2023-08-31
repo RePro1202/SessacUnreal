@@ -16,6 +16,8 @@ UPlayerAnimInstance::UPlayerAnimInstance()
 
 	mFallLandPosition = 0.14f;
 	mCanJump = true;
+
+	mWarpFlag = false;
 }
 
 void UPlayerAnimInstance::Attack()
@@ -35,7 +37,6 @@ void UPlayerAnimInstance::Attack()
 
 	// 배열.Num() 배열의 수.
 	mAttackIndex = (mAttackIndex + 1) % mAttackMontage.Num();
-
 }
 
 void UPlayerAnimInstance::Jump()
@@ -53,6 +54,11 @@ void UPlayerAnimInstance::Jump()
 bool UPlayerAnimInstance::CanJump()
 {
 	return mCanJump;
+}
+
+void UPlayerAnimInstance::Warp()
+{
+	mWarpFlag = true;
 }
 
 void UPlayerAnimInstance::NativeInitializeAnimation()
@@ -176,5 +182,10 @@ void UPlayerAnimInstance::AnimNotify_AttackEnd()
 {
 	mAttackEnable = true;
 	mAttackIndex = 0;
+}
+
+void UPlayerAnimInstance::AnimNotify_BackRingEnd()
+{
+	mWarpFlag = false;
 }
 

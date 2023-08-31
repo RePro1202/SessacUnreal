@@ -82,9 +82,14 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
-void APlayerCharacter::WarpBackward(float Scale)
+void APlayerCharacter::TeleportBackward(float Scale)
 {
-	AddActorWorldOffset(-GetActorForwardVector() * Scale);
+	FVector moveVector = GetActorForwardVector() * Scale;
+
+	//AddActorWorldOffset(-moveVector);
+	TeleportTo(GetActorLocation() - moveVector, GetActorRotation(), false, true);
+
+	mPlayerAnimInstance->Warp();
 }
 
 void APlayerCharacter::MoveFront(float Scale)

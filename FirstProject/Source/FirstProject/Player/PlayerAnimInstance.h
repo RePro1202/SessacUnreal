@@ -13,6 +13,7 @@ enum class EPlayerAnimType : uint8
 	Default,
 	Jump,
 	Fall,
+	Warp,
 	Death
 };
 
@@ -46,9 +47,14 @@ protected:
 	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	float mFallLandPosition;
 
+
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	bool mWarpFlag;
+
 	bool mAttackEnable;
 	int32 mAttackIndex;
 	bool mCanJump;
+
 
 public:
 	void ChangeAnim(EPlayerAnimType AnimType)
@@ -59,6 +65,7 @@ public:
 	void Attack();
 	void Jump();
 	bool CanJump();
+	void Warp();
 	
 public:
 	virtual void NativeInitializeAnimation();
@@ -94,4 +101,7 @@ public:
 
 	UFUNCTION()
 	void AnimNotify_AttackEnd();
+
+	UFUNCTION()
+	void AnimNotify_BackRingEnd();
 };

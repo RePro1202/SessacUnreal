@@ -39,7 +39,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
-	void WarpBackward(float Scale);
+	void TeleportBackward(float Scale);
 
 private:
 	void MoveFront(float Scale);

@@ -49,6 +49,6 @@ void ACollisionTester::Hit(UPrimitiveComponent* HitComponent, AActor* OtherActor
 
 	APlayerCharacter* player = Cast<APlayerCharacter>(OtherActor);
 
-	player->WarpBackward(1000.f);
+	player->TeleportBackward(1000.f);
 }
 
