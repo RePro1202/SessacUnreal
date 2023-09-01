@@ -2,6 +2,7 @@
 
 
 #include "Trigger.h"
+#include "../Effect/DefaultEffact.h"
 
 // Sets default values
 ATrigger::ATrigger()
@@ -11,19 +12,32 @@ ATrigger::ATrigger()
 
 	mBody = CreateDefaultSubobject<UBoxComponent>(TEXT("Body"));
 	SetRootComponent(mBody);
+	mBody->bVisualizeComponent = true;
+	mBody->SetBoxExtent(FVector(100.0, 100.0, 100.0));
+	mBody->CanCharacterStepUpOn = ECanBeCharacterBase::ECB_No;
+	mBody->OnComponentBeginOverlap.AddDynamic(this, &ATrigger::OverlapBegin);
+
+	mTriggerType = EUserTriggerType::AllObject;
 }
 
-// Called when the game starts or when spawned
-void ATrigger::BeginPlay()
+void ATrigger::OnConstruction(const FTransform& Transform)
 {
-	Super::BeginPlay();
-	
+	// 변경사항이 있을때 호출됨.
+	Super::OnConstruction(Transform);
+
+	SetTriggerType(mTriggerType);
 }
 
-// Called every frame
-void ATrigger::Tick(float DeltaTime)
+void ATrigger::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	Super::Tick(DeltaTime);
+	LOG(TEXT("inObject"));
 
+	FActorSpawnParameters ActorParam;
+	ActorParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	ADefaultEffact* Effect = GetWorld()->SpawnActor<ADefaultEffact>(GetActorLocation(), FRotator::ZeroRotator, ActorParam);
+
+	Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/InfinityBladeEffects/Effects/FX_Combat_Base/Resurrection/P_Resurrection_02.P_Resurrection_02'"));
+	Effect->SetAudioAsset(TEXT("/Script/Engine.SoundWave'/Game/Sound/Fire3.Fire3'"));
 }
 
