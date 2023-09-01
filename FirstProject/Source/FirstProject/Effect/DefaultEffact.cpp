@@ -14,21 +14,6 @@ ADefaultEffact::ADefaultEffact()
 
 	SetRootComponent(mParticle);
 	mAudio->SetupAttachment(mParticle);
-
-}
-
-// Called when the game starts or when spawned
-void ADefaultEffact::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void ADefaultEffact::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
 void ADefaultEffact::SetParticleAsset(const FString& Path)
@@ -40,6 +25,7 @@ void ADefaultEffact::SetParticleAsset(const FString& Path)
 	if (IsValid(Particle))
 	{
 		mParticle->SetTemplate(Particle);
+		mParticle->OnSystemFinished.AddDynamic(this, &ADefaultEffact::ParticleFinish);
 	}
 }
 
@@ -50,6 +36,12 @@ void ADefaultEffact::SetAudioAsset(const FString& Path)
 	if (IsValid(Sound))
 	{
 		mAudio->SetSound(Sound);
+		mAudio->Play();
 	}
+}
+
+void ADefaultEffact::ParticleFinish(UParticleSystemComponent* System)
+{
+	Destroy();
 }
 

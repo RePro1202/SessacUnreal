@@ -22,16 +22,12 @@ public:
 	// Sets default values for this actor's properties
 	ADefaultEffact();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 public:
 	void SetParticleAsset(const FString& Path);
 	void SetAudioAsset(const FString& Path);
+
+private:
+	UFUNCTION()
+	void ParticleFinish(UParticleSystemComponent* System);
 
 };

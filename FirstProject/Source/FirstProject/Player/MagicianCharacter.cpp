@@ -2,6 +2,7 @@
 
 
 #include "MagicianCharacter.h"
+#include "../Effect/DefaultEffact.h"
 
 AMagicianCharacter::AMagicianCharacter()
 {
@@ -60,7 +61,16 @@ void AMagicianCharacter::Attack1()
 
 	if (Collision)
 	{
+		FActorSpawnParameters ActorParam;
+		ActorParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
+
+		ADefaultEffact* Effect = GetWorld()->SpawnActor<ADefaultEffact>(
+			result.ImpactPoint, 
+			FRotator::ZeroRotator, ActorParam);
+
+		Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/InfinityBladeEffects/Effects/FX_Ability/Defense/P_Shield_Spawn.P_Shield_Spawn'"));
+		Effect->SetAudioAsset(TEXT("/Script/Engine.SoundWave'/Game/Sound/Fire1.Fire1'"));
 	}
 
 }
