@@ -44,7 +44,7 @@ void AMagicianCharacter::Attack1()
 	FHitResult result;
 
 	bool Collision = GetWorld()->SweepSingleByChannel(result, Start, End, FQuat::Identity, 
-		ECollisionChannel::ECC_EngineTraceChannel4, FCollisionShape::MakeSphere(50.f), param);
+		ECollisionChannel::ECC_GameTraceChannel4, FCollisionShape::MakeSphere(50.f), param);
 
 	// 디버깅 용(에디터)으로 출력한다.
 #if ENABLE_DRAW_DEBUG
