@@ -2,7 +2,7 @@
 
 
 #include "CollisionTester.h"
-#include "Player/PlayerCharacter.h"
+#include "../Player/PlayerCharacter.h"
 
 // Sets default values
 ACollisionTester::ACollisionTester()
