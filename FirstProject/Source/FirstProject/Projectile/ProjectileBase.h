@@ -25,13 +25,6 @@ protected:
 	UPROPERTY(Category = data, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UProjectileMovementComponent> mMovement;
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 public:
 	UFUNCTION()
 	void ProjectileStop(const FHitResult& ImpactResult);

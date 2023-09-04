@@ -21,28 +21,15 @@ AProjectileBase::AProjectileBase()
 
 	mMovement->SetUpdatedComponent(mBody);
 
-	mMovement->InitialSpeed = 1000.f;
+	mMovement->InitialSpeed = 1500.f;
 	mMovement->OnProjectileStop.AddDynamic(this, &AProjectileBase::ProjectileStop);
+	mMovement->ProjectileGravityScale = 0.1f;
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/TestBlueprint/Sphere1.Sphere1'"));
 
 	if (MeshAsset.Succeeded())
 		mMesh->SetStaticMesh(MeshAsset.Object);
 
-
-}
-
-// Called when the game starts or when spawned
-void AProjectileBase::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AProjectileBase::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
 
 }
 

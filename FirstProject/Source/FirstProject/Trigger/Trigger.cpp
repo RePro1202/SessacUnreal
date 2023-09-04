@@ -35,7 +35,7 @@ void ATrigger::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 	FActorSpawnParameters ActorParam;
 	ActorParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
-	ADefaultEffact* Effect = GetWorld()->SpawnActor<ADefaultEffact>(GetActorLocation(), FRotator::ZeroRotator, ActorParam);
+	ADefaultEffact* Effect = GetWorld()->SpawnActor<ADefaultEffact>(OtherActor->GetActorLocation(), FRotator::ZeroRotator, ActorParam);
 
 	Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/InfinityBladeEffects/Effects/FX_Combat_Base/Resurrection/P_Resurrection_02.P_Resurrection_02'"));
 	Effect->SetAudioAsset(TEXT("/Script/Engine.SoundWave'/Game/Sound/Fire3.Fire3'"));
