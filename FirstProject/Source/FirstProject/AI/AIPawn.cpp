@@ -26,19 +26,18 @@ void AAIPawn::BeginPlay()
 	
 }
 
+void AAIPawn::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+
+}
+
 // Called every frame
 void AAIPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	AddMovementInput(GetActorForwardVector());
-
-}
-
-// Called to bind functionality to input
-void AAIPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
 
