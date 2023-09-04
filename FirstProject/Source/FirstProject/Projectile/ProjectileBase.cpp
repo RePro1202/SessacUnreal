@@ -23,6 +23,13 @@ AProjectileBase::AProjectileBase()
 
 	mMovement->InitialSpeed = 1000.f;
 	mMovement->OnProjectileStop.AddDynamic(this, &AProjectileBase::ProjectileStop);
+
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/TestBlueprint/Sphere1.Sphere1'"));
+
+	if (MeshAsset.Succeeded())
+		mMesh->SetStaticMesh(MeshAsset.Object);
+
+
 }
 
 // Called when the game starts or when spawned
@@ -41,7 +48,16 @@ void AProjectileBase::Tick(float DeltaTime)
 
 void AProjectileBase::ProjectileStop(const FHitResult& ImpactResult)
 {
+	Destroy();
+}
 
+void AProjectileBase::SetMeshAsset(const FString& Path)
+{
+	UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, *Path);
 
+	if (IsValid(Mesh))
+	{
+		mMesh->SetStaticMesh(Mesh);
+	}
 }
 

@@ -3,6 +3,7 @@
 
 #include "MagicianCharacter.h"
 #include "../Effect/DefaultEffact.h"
+#include "../Projectile/ProjectileBase.h"
 
 AMagicianCharacter::AMagicianCharacter()
 {

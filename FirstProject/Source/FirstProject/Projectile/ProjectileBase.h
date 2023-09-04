@@ -36,4 +36,7 @@ public:
 	UFUNCTION()
 	void ProjectileStop(const FHitResult& ImpactResult);
 
+public:
+	void SetMeshAsset(const FString& Path);
+
 };
