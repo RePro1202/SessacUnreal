@@ -61,3 +61,8 @@ void AProjectileBase::SetMeshAsset(const FString& Path)
 	}
 }
 
+void AProjectileBase::SetCollisionProfile(const FName& Name)
+{
+	mBody->SetCollisionProfileName(Name);
+}
+

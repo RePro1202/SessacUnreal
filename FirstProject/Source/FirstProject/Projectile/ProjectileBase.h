@@ -38,5 +38,5 @@ public:
 
 public:
 	void SetMeshAsset(const FString& Path);
-
+	void SetCollisionProfile(const FName& Name);
 };

@@ -78,5 +78,15 @@ void AMagicianCharacter::Attack1()
 
 void AMagicianCharacter::Attack2()
 {
+	FActorSpawnParameters ActorParam;
+	ActorParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
+	// 소켓의 위치를 얻어온다. 소켓의 위치는 SkeletalMeshComponent를 이용해서 얻어올 수 있다.
+	FVector SocketLoc = GetMesh()->GetSocketLocation(TEXT("hand_l_Projectile"));
+
+	AProjectileBase* Projectile = GetWorld()->SpawnActor<AProjectileBase>(
+		SocketLoc,
+		GetActorRotation(), ActorParam);
+
+	Projectile->SetCollisionProfile(TEXT("PlayerProjectile"));
 }
