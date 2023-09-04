@@ -70,7 +70,7 @@ void AMagicianCharacter::Attack1()
 			result.ImpactPoint, 
 			FRotator::ZeroRotator, ActorParam);
 
-		Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/InfinityBladeEffects/Effects/FX_Ability/Defense/P_Shield_Spawn.P_Shield_Spawn'"));
+		Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/FXVarietyPack/Particles/P_ky_hit1.P_ky_hit1'"));
 		Effect->SetAudioAsset(TEXT("/Script/Engine.SoundWave'/Game/Sound/Fire1.Fire1'"));
 	}
 
