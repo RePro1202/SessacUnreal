@@ -29,13 +29,6 @@ protected:
 	// 스폰 포인트를 이용해서 생성한 객체가 아닐 경우 None이 들어가 있다.
 	TObjectPtr<class AAISpawnPoint> mSpawnPoint;
 
-public:
-	float GetHalfHeight() const
-	{
-		return mBody->GetScaledCapsuleHalfHeight();
-	}
-
-	void SetSpawnPoint(class AAISpawnPoint* SpawnPoint);
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,9 +37,18 @@ protected:
 	// 생성한 객체가 제거될때 호출된다.
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason);
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+public:
+	float GetHalfHeight() const
+	{
+		return mBody->GetScaledCapsuleHalfHeight();
+	}
+
+	void SetSpawnPoint(class AAISpawnPoint* SpawnPoint);
+
 
 public:
 	void SetCollisionProfile(const FName& Name);

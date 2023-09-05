@@ -22,7 +22,7 @@ AAISerathPawn::AAISerathPawn()
 	if (AnimAsset.Succeeded())
 		mMesh->SetAnimInstanceClass(AnimAsset.Class);
 
-	
+	mMovement->MaxSpeed = 400;
 
 }
 

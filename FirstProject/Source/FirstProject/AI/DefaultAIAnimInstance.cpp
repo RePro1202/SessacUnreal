@@ -29,6 +29,14 @@ void UDefaultAIAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 			//mMoveSpeed값을 블렌드 스페이스 애니메이션에 이용해서 수치에 따라 재생.
 			mMoveSpeed = Movement->Velocity.Length();
 		}
+		else 
+		{
+			LOG(TEXT("null movement"))
+		}
+	}
+	else
+	{
+		LOG(TEXT("null pawn"))
 	}
 }
 
