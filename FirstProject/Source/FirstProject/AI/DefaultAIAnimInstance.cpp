@@ -2,9 +2,11 @@
 
 
 #include "DefaultAIAnimInstance.h"
+#include "AIPawn.h"
 
 UDefaultAIAnimInstance::UDefaultAIAnimInstance()
 {
+	mMoveSpeed = 0.f;
 }
 
 void UDefaultAIAnimInstance::NativeInitializeAnimation()
@@ -15,6 +17,19 @@ void UDefaultAIAnimInstance::NativeInitializeAnimation()
 void UDefaultAIAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
+
+	AAIPawn* Pawn = Cast<AAIPawn>(TryGetPawnOwner());
+
+	if (IsValid(Pawn))
+	{
+		UMovementComponent* Movement = Pawn->GetMovementComponent();
+
+		if (IsValid(Movement))
+		{
+			//mMoveSpeed값을 블렌드 스페이스 애니메이션에 이용해서 수치에 따라 재생.
+			mMoveSpeed = Movement->Velocity.Length();
+		}
+	}
 }
 
 void UDefaultAIAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
