@@ -11,7 +11,7 @@ AAIGoblinPawn::AAIGoblinPawn()
 	mBody->SetCapsuleHalfHeight(70.f);
 	mBody->SetCapsuleRadius(32.f);
 
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> MeshAsset(TEXT("/Script/Engine.SkeletalMesh'/Game/Goblin/Mesh/Epic_skeleton/SK_Epic_Goblin.SK_Epic_Goblin'"));
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> MeshAsset(TEXT("/Script/Engine.SkeletalMesh'/Game/Goblin/Mesh/Goblin_Base/SK_Goblin.SK_Goblin'"));
 	if (MeshAsset.Succeeded())
 		mMesh->SetSkeletalMesh(MeshAsset.Object);
 
@@ -21,6 +21,7 @@ AAIGoblinPawn::AAIGoblinPawn()
 	static ConstructorHelpers::FClassFinder<UAnimInstance> AnimAsset(TEXT("/Script/Engine.AnimBlueprint'/Game/AI/AM_AIGoblin.AM_AIGoblin_C'"));
 	if (AnimAsset.Succeeded())
 		mMesh->SetAnimInstanceClass(AnimAsset.Class);
+
 
 	mMovement->MaxSpeed = 300;
 }
