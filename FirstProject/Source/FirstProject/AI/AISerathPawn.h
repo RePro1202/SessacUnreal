@@ -5,9 +5,6 @@
 #include "AIPawn.h"
 #include "AISerathPawn.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class FIRSTPROJECT_API AAISerathPawn : public AAIPawn
 {
@@ -22,7 +19,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	// 생성한 객체가 제거될때 호출된다.
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason);
 
 public:
 	// Called every frame

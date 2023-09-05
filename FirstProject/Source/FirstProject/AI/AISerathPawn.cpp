@@ -22,6 +22,8 @@ AAISerathPawn::AAISerathPawn()
 	if (AnimAsset.Succeeded())
 		mMesh->SetAnimInstanceClass(AnimAsset.Class);
 
+	
+
 }
 
 void AAISerathPawn::BeginPlay()
