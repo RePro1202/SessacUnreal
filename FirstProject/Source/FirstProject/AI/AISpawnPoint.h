@@ -44,6 +44,7 @@ protected:
 
 public:
 	void ClearObject();
+	void StartSpawn();
 
 private:
 	void SpawnObject();

@@ -55,6 +55,7 @@ public:
 protected:
 	virtual void OnConstruction(const FTransform& Transform);
 
+	virtual void DoSomething();
 
 public:
 	UFUNCTION()

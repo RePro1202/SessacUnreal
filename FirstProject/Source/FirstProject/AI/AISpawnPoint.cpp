@@ -29,6 +29,14 @@ void AAISpawnPoint::ClearObject()
 	mSpawnObject = nullptr;
 }
 
+void AAISpawnPoint::StartSpawn()
+{
+	if (!IsValid(mSpawnObject) && IsValid(mSpawnClass))
+	{
+		SpawnObject();
+	}
+}
+
 void AAISpawnPoint::SpawnObject()
 {
 	FActorSpawnParameters	ActorParam;
@@ -65,7 +73,7 @@ void AAISpawnPoint::BeginPlay()
 
 	if (IsValid(mSpawnClass))
 	{
-		SpawnObject();
+		//SpawnObject();
 	}
 }
 
@@ -85,7 +93,7 @@ void AAISpawnPoint::Tick(float DeltaTime)
 			// 다시 활용해야 하기 때문에 0으로 초기화한다.
 			mTime = 0.f;
 
-			SpawnObject();
+			//SpawnObject();
 		}
 	}
 }
