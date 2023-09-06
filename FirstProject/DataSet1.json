@@ -1,0 +1,32 @@
+[
+	{
+		"Name": "Test1",
+		"TestBool": true,
+		"TestInt": 144,
+		"AnimType": "Fall",
+		"TestFloat": 15.51187,
+		"AIPawn": "None",
+		"Material": "None",
+		"Textual2D": "None"
+	},
+	{
+		"Name": "Test2",
+		"TestBool": false,
+		"TestInt": 12,
+		"AnimType": "Fall",
+		"TestFloat": 15.51187,
+		"AIPawn": "None",
+		"Material": "None",
+		"Textual2D": "None"
+	},
+	{
+		"Name": "Test3",
+		"TestBool": false,
+		"TestInt": 1222,
+		"AnimType": "Fall",
+		"TestFloat": 15.51187,
+		"AIPawn": "None",
+		"Material": "None",
+		"Textual2D": "None"
+	}
+]

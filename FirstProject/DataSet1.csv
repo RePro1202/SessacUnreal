@@ -1,0 +1,4 @@
+---,TestBool,TestInt,AnimType,TestFloat,AIPawn,Material,Textual2D
+Test1,"True","144","Fall","15.511870","None","None","None"
+Test2,"Fasle","12","Fall","15.511870","None","None","None"
+Test3,"Fasle","1222","Fall","15.511870","None","None","None"
