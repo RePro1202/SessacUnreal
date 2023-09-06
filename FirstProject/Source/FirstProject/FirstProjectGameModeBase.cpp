@@ -3,6 +3,7 @@
 
 #include "FirstProjectGameModeBase.h"
 #include "Player/MagicianCharacter.h"
+#include "Player/SAC1PlayerState.h"
 
 AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 {
@@ -17,4 +18,7 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 	// AMagicianCharacter::StaticClass() : AMagicianCharacter 클래스의 클래스 레퍼런스를 얻어온다.
 	// cpp클래스는 블루프린트와 달리 로드 없이 가져올 수 있다.
 	DefaultPawnClass = AMagicianCharacter::StaticClass();
+
+	// PlayerStateClass를 지정한다.
+	PlayerStateClass = ASAC1PlayerState::StaticClass();
 }

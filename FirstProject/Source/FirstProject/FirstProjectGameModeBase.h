@@ -6,9 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "FirstProjectGameModeBase.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class FIRSTPROJECT_API AFirstProjectGameModeBase : public AGameModeBase
 {
