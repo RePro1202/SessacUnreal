@@ -15,7 +15,13 @@ public:
 	ASpawnTrigger();
 
 	UPROPERTY(Category = SpawnTarget, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	TArray<TObjectPtr<class AAISpawnPoint>> mList;
+	TArray<TObjectPtr<class AAISpawnPointWithVFX>> mList;
+
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UParticleSystem>	mParticleAsset;
+
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<USoundBase>	mSoundAsset;
 
 protected:
 	void DoSomething() override;

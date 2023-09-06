@@ -2,8 +2,7 @@
 
 
 #include "SpawnTrigger.h"
-#include "../AI/AISpawnPoint.h"
-
+#include "../AI/AISpawnPointWithVFX.h"
 
 ASpawnTrigger::ASpawnTrigger()
 {
@@ -15,7 +14,7 @@ void ASpawnTrigger::DoSomething()
 	for (int i = 0; i < mList.Num(); i++)
 	{
 		if (IsValid(mList[i]))
-			mList[i]->StartSpawn();
+			mList[i]->SetVFX(mParticleAsset, mSoundAsset);
 	}
 
 }

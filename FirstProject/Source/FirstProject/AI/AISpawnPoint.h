@@ -41,23 +41,11 @@ protected:
 
 	float mTime;
 
-	UPROPERTY(Category = data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	bool PlaySpawnEffect;
-
-	UPROPERTY(Category = data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UParticleSystem> mParticle;
-
-	UPROPERTY(Category = data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<USoundBase> mAudio;
-
-
 public:
 	void ClearObject();
-	void StartSpawn();
+	virtual void StartSpawn();
 
-private:
+protected:
 	void SpawnObject();
-
-
 
 };
