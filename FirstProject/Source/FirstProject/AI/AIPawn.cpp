@@ -3,6 +3,7 @@
 
 #include "AIPawn.h"
 #include "AISpawnPoint.h"
+#include "AIStateComponent.h"
 
 // Sets default values
 AAIPawn::AAIPawn()
@@ -13,6 +14,7 @@ AAIPawn::AAIPawn()
 	mBody = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Body"));
 	mMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	mMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));
+	mState = CreateDefaultSubobject<UAIStateComponent>(TEXT("State"));
 
 	SetRootComponent(mBody);
 	mMesh->SetupAttachment(mBody);
@@ -20,6 +22,7 @@ AAIPawn::AAIPawn()
 
 	mBody->SetCollisionProfileName(TEXT("AI"));
 	mMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
 }
 
 void AAIPawn::SetSpawnPoint(AAISpawnPoint* SpawnPoint)

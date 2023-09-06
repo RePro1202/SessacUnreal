@@ -2,6 +2,7 @@
 
 
 #include "AIGoblinPawn.h"
+#include "AIStateComponent.h"
 #include "DefaultAIAnimInstance.h"
 
 AAIGoblinPawn::AAIGoblinPawn()
@@ -22,8 +23,9 @@ AAIGoblinPawn::AAIGoblinPawn()
 	if (AnimAsset.Succeeded())
 		mMesh->SetAnimInstanceClass(AnimAsset.Class);
 
-
 	mMovement->MaxSpeed = 300;
+
+	mState->InitState(EAIType::Goblin);
 }
 
 void AAIGoblinPawn::BeginPlay()

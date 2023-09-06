@@ -29,6 +29,9 @@ protected:
 	// 스폰 포인트를 이용해서 생성한 객체가 아닐 경우 None이 들어가 있다.
 	TObjectPtr<class AAISpawnPoint> mSpawnPoint;
 
+	UPROPERTY(Category = Component, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<class UAIStateComponent> mState;
+
 
 protected:
 	// Called when the game starts or when spawned
