@@ -31,7 +31,6 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UArrowComponent> mArrow;
 #endif
-
 	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf <class AAIPawn> mSpawnClass;
 
@@ -41,6 +40,16 @@ protected:
 	float mSpawnTime;
 
 	float mTime;
+
+	UPROPERTY(Category = data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	bool PlaySpawnEffect;
+
+	UPROPERTY(Category = data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UParticleSystem> mParticle;
+
+	UPROPERTY(Category = data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<USoundBase> mAudio;
+
 
 public:
 	void ClearObject();

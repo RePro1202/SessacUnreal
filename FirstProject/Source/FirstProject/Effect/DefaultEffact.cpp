@@ -25,7 +25,7 @@ void ADefaultEffact::SetParticleAsset(const FString& Path)
 	if (IsValid(Particle))
 	{
 		mParticle->SetTemplate(Particle);
-		mParticle->OnSystemFinished.AddDynamic(this, &ADefaultEffact::ParticleFinish);
+		mParticle->OnSystemFinished.AddDynamic(this, &ADefaultEffact::ParticleFinishEvent);
 	}
 }
 
@@ -40,8 +40,13 @@ void ADefaultEffact::SetAudioAsset(const FString& Path)
 	}
 }
 
-void ADefaultEffact::ParticleFinish(UParticleSystemComponent* System)
+void ADefaultEffact::ParticleFinished()
 {
 	Destroy();
+}
+
+void ADefaultEffact::ParticleFinishEvent(UParticleSystemComponent* System)
+{
+	ParticleFinished();
 }
 

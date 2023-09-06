@@ -33,6 +33,8 @@ void AAISpawnPoint::StartSpawn()
 {
 	if (!IsValid(mSpawnObject) && IsValid(mSpawnClass))
 	{
+
+
 		SpawnObject();
 	}
 }

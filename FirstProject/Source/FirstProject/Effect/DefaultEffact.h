@@ -24,10 +24,13 @@ public:
 
 public:
 	void SetParticleAsset(const FString& Path);
-	void SetAudioAsset(const FString& Path);
+	virtual void SetAudioAsset(const FString& Path);
+
+protected:
+	virtual void ParticleFinished();
 
 private:
 	UFUNCTION()
-	void ParticleFinish(UParticleSystemComponent* System);
+	void ParticleFinishEvent(UParticleSystemComponent* System);
 
 };

@@ -17,7 +17,6 @@ public:
 	UPROPERTY(Category = SpawnTarget, EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	TArray<TObjectPtr<class AAISpawnPoint>> mList;
 
-
 protected:
 	void DoSomething() override;
 };
