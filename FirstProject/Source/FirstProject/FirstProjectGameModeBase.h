@@ -14,4 +14,11 @@ class FIRSTPROJECT_API AFirstProjectGameModeBase : public AGameModeBase
 	
 public:
 	AFirstProjectGameModeBase();
+
+public:
+	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage);
+	virtual void InitGameState();
+	virtual void PostLogin(APlayerController* NewPlayer);
+	virtual void BeginPlay()	override;
+	virtual void Tick(float DeltaTime)	override;
 };

@@ -51,24 +51,7 @@ protected:
 
 public:
 	void SetPlayerData(EPlayerJob Job, int32 AttackPoint, int32 ArmorPoint, int32 HP, int32 MP, int32 Level,
-		int32 Exp, int32 Gold, float MoveSpeed, float AttackDistance)
-	{
-		mJob = Job;
-		mAttackPoint = AttackPoint;
-		mArmorPoint = ArmorPoint;
-		mHP = HP;
-		mHPMax = HP;
-		mMP = MP;
-		mMPMax = MP;
-		mLevel = Level;
-		mExp = Exp;
-		mGold = Gold;
-		mMoveSpeed = MoveSpeed;
-		mAttackDistance = AttackDistance;
-	}
+		int32 Exp, int32 Gold, float MoveSpeed, float AttackDistance);
 
-	void InitPlayerData(EPlayerJob Job)
-	{
-
-	}
+	void InitPlayerData(EPlayerJob Job);
 };

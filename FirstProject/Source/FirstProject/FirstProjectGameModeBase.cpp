@@ -22,3 +22,34 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 	// PlayerStateClass를 지정한다.
 	PlayerStateClass = ASAC1PlayerState::StaticClass();
 }
+
+void AFirstProjectGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+}
+
+void AFirstProjectGameModeBase::InitGameState()
+{
+	Super::InitGameState();
+}
+
+void AFirstProjectGameModeBase::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+
+	// auto : 대입받는 값의 타입을 자동으로 결정한다.
+	auto PlayerState = NewPlayer->GetPlayerState<ASAC1PlayerState>();
+
+	if (IsValid(PlayerState))
+		PlayerState->InitPlayerData(EPlayerJob::Magicion);
+}
+
+void AFirstProjectGameModeBase::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+void AFirstProjectGameModeBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}
