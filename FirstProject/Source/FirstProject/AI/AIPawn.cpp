@@ -4,6 +4,7 @@
 #include "AIPawn.h"
 #include "AISpawnPoint.h"
 #include "AIStateComponent.h"
+#include "DefaultAIController.h"
 
 // Sets default values
 AAIPawn::AAIPawn()
@@ -23,6 +24,8 @@ AAIPawn::AAIPawn()
 	mBody->SetCollisionProfileName(TEXT("AI"));
 	mMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+	AIControllerClass = ADefaultAIController::StaticClass();
 }
 
 void AAIPawn::SetSpawnPoint(AAISpawnPoint* SpawnPoint)

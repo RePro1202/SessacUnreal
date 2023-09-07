@@ -19,7 +19,7 @@ public:
 	
 private:
 	UPROPERTY(Category = AI, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UBehaviorTree> mAITee;
+	TObjectPtr<UBehaviorTree> mAITree;
 
 	UPROPERTY(Category = AI, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UBlackboardData> mAIBlackboard;
