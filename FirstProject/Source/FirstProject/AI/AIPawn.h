@@ -25,6 +25,9 @@ protected:
 	UPROPERTY(Category = Component, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UFloatingPawnMovement> mMovement;
 
+	UPROPERTY(Category = Component, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<class UAIStateComponent> mState;
+
 	// 생성된 스폰포인트를 알고 있게 해준다.
 	// 스폰 포인트를 이용해서 생성한 객체가 아닐 경우 None이 들어가 있다.
 	TObjectPtr<class AAISpawnPoint> mSpawnPoint;

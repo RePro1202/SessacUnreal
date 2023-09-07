@@ -3,6 +3,7 @@
 
 #include "AIGoblinPawn.h"
 #include "DefaultAIAnimInstance.h"
+#include "AIStateComponent.h"
 
 AAIGoblinPawn::AAIGoblinPawn()
 {
@@ -24,6 +25,8 @@ AAIGoblinPawn::AAIGoblinPawn()
 
 
 	mMovement->MaxSpeed = 300;
+
+	mState->InitState(EAIType::Goblin);
 }
 
 void AAIGoblinPawn::BeginPlay()

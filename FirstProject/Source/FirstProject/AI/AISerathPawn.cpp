@@ -3,6 +3,7 @@
 
 #include "AISerathPawn.h"
 #include "DefaultAIAnimInstance.h"
+#include "AIStateComponent.h"
 
 AAISerathPawn::AAISerathPawn()
 {
@@ -23,6 +24,8 @@ AAISerathPawn::AAISerathPawn()
 		mMesh->SetAnimInstanceClass(AnimAsset.Class);
 
 	mMovement->MaxSpeed = 400;
+
+	mState->InitState(EAIType::Serath);
 
 }
 
