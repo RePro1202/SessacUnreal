@@ -3,6 +3,7 @@
 
 #include "PlayerCharacter.h"
 #include "PlayerAnimInstance.h"
+#include "SAC1PlayerState.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -186,6 +187,8 @@ void APlayerCharacter::BodyHit(UPrimitiveComponent* HitComponent, AActor* OtherA
 {
 	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Red, 
 		FString::Printf(TEXT("Dest : %s"), *OtherActor->GetName()));
+
+	// TODO : 충돌처리
 }
 
 void APlayerCharacter::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)

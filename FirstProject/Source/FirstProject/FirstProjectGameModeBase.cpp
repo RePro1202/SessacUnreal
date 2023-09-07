@@ -4,6 +4,7 @@
 #include "FirstProjectGameModeBase.h"
 #include "Player/MagicianCharacter.h"
 #include "Player/SAC1PlayerState.h"
+#include "SAC1GameState.h"
 
 AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 {
@@ -21,6 +22,9 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 
 	// PlayerStateClass를 지정한다.
 	PlayerStateClass = ASAC1PlayerState::StaticClass();
+
+	GameStateClass = ASAC1GameState::StaticClass();
+
 }
 
 void AFirstProjectGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
