@@ -28,9 +28,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
+private:
+	UFUNCTION()
 	void ParticleFinish(UParticleSystemComponent* System);
 
+public:
 	void SetVFX(TObjectPtr<UParticleSystem> ParticleAsset, TObjectPtr<USoundBase> SoundAsset);
-
 };

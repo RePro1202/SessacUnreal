@@ -31,8 +31,9 @@ protected:
 	UPROPERTY()
 	TObjectPtr<UArrowComponent> mArrow;
 #endif
+
 	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf <class AAIPawn> mSpawnClass;
+	TSubclassOf<class AAIPawn> mSpawnClass;
 
 	TObjectPtr<class AAIPawn> mSpawnObject;
 
@@ -43,7 +44,7 @@ protected:
 
 public:
 	void ClearObject();
-	virtual void StartSpawn();
+	void StartSpawn();
 
 protected:
 	void SpawnObject();
