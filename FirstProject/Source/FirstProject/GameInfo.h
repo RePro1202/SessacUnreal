@@ -9,6 +9,10 @@
 #include "DrawDebughelpers.h"
 #include "EngineGlobals.h"
 #include "Engine.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "BehaviorTree/BehaviorTree.h"
+#include "BehaviorTree/BlackboardData.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 #include "UObject/NoExportTypes.h"
 
