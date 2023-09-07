@@ -50,22 +50,20 @@ protected:
 	float mAttackDistance;
 
 public:
-	//bool AddHP(int32 HP)
-	//{
-	//	mHP += HP;
-	//
-	//	if (mHP <= 0)
-	//	{
-	//		mHP = 0;
-	//		return true;
-	//	}
-	//	else if (mHP > mHPMax)
-	//	{
-	//		mHP = mHPMax;
-	//		return false;
-	//	}
-	//}
+	bool AddHP(int32 HP)
+	{
+		mHP += HP;
+	
+		if (mHP <= 0)
+		{
+			mHP = 0;
+			return true;
+		}
+		else if (mHP > mHPMax)
+			mHP = mHPMax;
 
+		return false;
+	}
 
 public:
 	void SetPlayerData(EPlayerJob Job, int32 AttackPoint, int32 ArmorPoint, int32 HP, int32 MP, int32 Level,
