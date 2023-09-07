@@ -36,6 +36,9 @@ void ATrigger::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 {
 	LOG(TEXT("inObject"));
 
+	TriggerOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
+
+	/*
 	FActorSpawnParameters ActorParam;
 	ActorParam.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 
@@ -43,7 +46,10 @@ void ATrigger::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 
 	Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/InfinityBladeEffects/Effects/FX_Combat_Base/Resurrection/P_Resurrection_02.P_Resurrection_02'"));
 	Effect->SetAudioAsset(TEXT("/Script/Engine.SoundWave'/Game/Sound/Fire3.Fire3'"));
+	*/
+}
 
-	DoSomething();
+void ATrigger::TriggerOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
 }
 

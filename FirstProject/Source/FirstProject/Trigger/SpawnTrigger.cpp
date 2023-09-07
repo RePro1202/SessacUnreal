@@ -9,7 +9,7 @@ ASpawnTrigger::ASpawnTrigger()
 	
 }
 
-void ASpawnTrigger::DoSomething()
+void ASpawnTrigger::TriggerOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	for (int i = 0; i < mList.Num(); i++)
 	{
