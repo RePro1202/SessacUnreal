@@ -2,6 +2,7 @@
 
 
 #include "../AIPawn.h"
+#include "../AIStateComponent.h"
 #include "../DefaultAIController.h"
 #include "BTService_TargetDetect.h"
 
@@ -27,16 +28,20 @@ void UBTService_TargetDetect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8*
 	if (!IsValid(AIPawn)) return;
 
 
+	FVector	AILoc = AIPawn->GetActorLocation();
+	AILoc.Z -= AIPawn->GetHalfHeight();
+
 	FHitResult result;
 	FCollisionQueryParams param(NAME_None, false, AIPawn);
 
 	bool Collision = GetWorld()->SweepSingleByChannel(
 		result, 
-		AIPawn->GetActorLocation(),
-		AIPawn->GetActorLocation(), 
+		AILoc,
+		AILoc,
 		FQuat::Identity,
 		ECollisionChannel::ECC_GameTraceChannel8,
-		FCollisionShape::MakeSphere(800.f), param);
+		FCollisionShape::MakeSphere(AIPawn->GetAIState()->GetInteractionDistance()),
+		param);
 
 	
 #if ENABLE_DRAW_DEBUG
