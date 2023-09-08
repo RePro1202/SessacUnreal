@@ -5,6 +5,7 @@
 #include "AISpawnPoint.h"
 #include "AIStateComponent.h"
 #include "DefaultAIController.h"
+#include "DefaultAIAnimInstance.h"
 
 // Sets default values
 AAIPawn::AAIPawn()
@@ -38,6 +39,7 @@ void AAIPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	mAnim = Cast<UDefaultAIAnimInstance>(mMesh->GetAnimInstance());
 }
 
 void AAIPawn::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -53,7 +55,7 @@ void AAIPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	AddMovementInput(GetActorForwardVector());
+	//AddMovementInput(GetActorForwardVector());
 
 }
 

@@ -6,6 +6,7 @@
 
 UDefaultAIAnimInstance::UDefaultAIAnimInstance()
 {
+	mAnimType = EAIAnimType::Idle;
 	mMoveSpeed = 0.f;
 }
 
