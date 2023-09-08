@@ -6,51 +6,6 @@
 #include "Components/ActorComponent.h"
 #include "AIStateComponent.generated.h"
 
-UENUM(BlueprintType)
-enum class EAIType : uint8
-{
-	None,
-	Serath,
-	Goblin
-};
-
-USTRUCT(BlueprintType)
-struct FAIDataTable : public FTableRowBase
-{
-	GENERATED_USTRUCT_BODY()
-
-public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	EAIType Type;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 AttackPoint;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 ArmorPoint;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 HP;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 MP;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 Level;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 Exp;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	int32 Gold;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float MoveSpeed;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float AttackDistance;
-};
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class FIRSTPROJECT_API UAIStateComponent : public UActorComponent
@@ -98,7 +53,10 @@ protected:
 	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	float mAttackDistance;
 
-	TObjectPtr<UDataTable> mDataTabl;
+	UPROPERTY(Category = Data, VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float mInteractionDistance;
+
+	UDataTable* mDataTabl;
 
 protected:
 	// Called when the game starts
@@ -110,4 +68,12 @@ public:
 
 public:
 	void InitState(EAIType Type);
+
+	float GetAttackDistance() {
+		return mAttackDistance;
+	}
+
+	float GetInteractionDistance() {
+		return mInteractionDistance;
+	}
 };

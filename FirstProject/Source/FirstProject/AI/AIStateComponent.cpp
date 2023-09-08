@@ -2,6 +2,7 @@
 
 
 #include "AIStateComponent.h"
+#include "../FirstProjectGameModeBase.h"
 
 // Sets default values for this component's properties
 UAIStateComponent::UAIStateComponent()
@@ -10,7 +11,6 @@ UAIStateComponent::UAIStateComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
 	static ConstructorHelpers::FObjectFinder<UDataTable> AIData(TEXT("/Script/Engine.DataTable'/Game/Data/DT_AI_DataTable.DT_AI_DataTable'"));
 
 	if (AIData.Succeeded())
@@ -25,7 +25,6 @@ void UAIStateComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
 	
 }
 
@@ -35,7 +34,6 @@ void UAIStateComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
 }
 
 void UAIStateComponent::InitState(EAIType Type)
@@ -68,5 +66,6 @@ void UAIStateComponent::InitState(EAIType Type)
 	mGold = Data->Gold;
 	mMoveSpeed = Data->MoveSpeed;
 	mAttackDistance = Data->AttackDistance;
+	mInteractionDistance = Data->InteractionDistance;
 }
 
