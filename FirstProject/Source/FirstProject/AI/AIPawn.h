@@ -45,9 +45,19 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	const TObjectPtr<class UAIStateComponent>& GetAIState()	const
+	{
+		return mState;
+	}
+
 	float GetHalfHeight() const
 	{
 		return mBody->GetScaledCapsuleHalfHeight();
+	}
+
+	float GetCapsuleRadius() const
+	{
+		return mBody->GetScaledCapsuleRadius();
 	}
 
 	void SetSpawnPoint(class AAISpawnPoint* SpawnPoint);
