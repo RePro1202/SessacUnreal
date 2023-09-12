@@ -131,6 +131,14 @@ public:
 	float InteractionDistance;
 };
 
+UENUM(BlueprintType)
+enum class EIdentificationType : uint8
+{
+	Unknown,
+	Frend,
+	Foe
+};
+
 
 UCLASS()
 class FIRSTPROJECT_API UGameInfo : public UObject

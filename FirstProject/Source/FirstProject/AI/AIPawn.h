@@ -37,6 +37,9 @@ protected:
 
 	bool mAttackEnd;
 
+	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	EIdentificationType mIFFType;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -73,6 +76,11 @@ public:
 	bool GetAttackEnd() const
 	{
 		return mAttackEnd;
+	}
+
+	EIdentificationType GetIFF() const
+	{
+		return mIFFType;
 	}
 
 	void SetAttackEnd(bool AttackEnd)
