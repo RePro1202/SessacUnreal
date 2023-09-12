@@ -42,6 +42,9 @@ protected:
 
 	float mTime;
 
+	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	EIdentificationType mIFFType;
+
 public:
 	void ClearObject();
 	void StartSpawn();

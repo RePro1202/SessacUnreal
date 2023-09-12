@@ -83,6 +83,11 @@ public:
 		return mIFFType;
 	}
 
+	void SetIFF(EIdentificationType Type)
+	{
+		mIFFType = Type;
+	}
+
 	void SetAttackEnd(bool AttackEnd)
 	{
 		mAttackEnd = AttackEnd;

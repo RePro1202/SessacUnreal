@@ -63,7 +63,7 @@ void AAISpawnPoint::SpawnObject()
 		GetActorRotation(), ActorParam);
 
 	mSpawnObject->SetSpawnPoint(this);
-	
+	mSpawnObject->SetIFF(mIFFType);
 }
 
 // Called when the game starts or when spawned
