@@ -17,7 +17,8 @@ enum class EAIAnimType : uint8
 	Death,
 	Skill1,
 	Skill2,
-	Skill3
+	Skill3,
+	Hello
 };
 
 
