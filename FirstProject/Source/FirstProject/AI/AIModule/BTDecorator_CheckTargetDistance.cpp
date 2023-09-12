@@ -2,13 +2,13 @@
 
 
 #include "BTDecorator_CheckTargetDistance.h"
+#include "AIController.h"
 #include "../AIPawn.h"
 #include "../AIStateComponent.h"
-#include "AIController.h"
 
 UBTDecorator_CheckTargetDistance::UBTDecorator_CheckTargetDistance()
 {
-	mCheckType = ECheckDistanceType::Attack;
+	mCheckType = ECheckDistanceType::Interaction;
 }
 
 bool UBTDecorator_CheckTargetDistance::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
@@ -37,9 +37,11 @@ bool UBTDecorator_CheckTargetDistance::CalculateRawConditionValue(UBehaviorTreeC
 		break;
 	}
 
-	// AIController가 가지고 있는 BlackboardComponent를 이용하여 Target을
-		// 얻어온다.
+	// AIController가 가지고 있는 BlackboardComponent를 이용하여 Target을 얻어온다.
 	AActor* Target = Cast<AActor>(Controller->GetBlackboardComponent()->GetValueAsObject(TEXT("Target")));
+
+	if (!IsValid(Target))
+		return false;
 
 	FVector	AILoc = AIPawn->GetActorLocation();
 	FVector	TargetLoc = Target->GetActorLocation();

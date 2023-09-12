@@ -60,3 +60,18 @@ void UDefaultAIAnimInstance::NativeBeginPlay()
 {
 	Super::NativeBeginPlay();
 }
+
+void UDefaultAIAnimInstance::AnimNotify_Attack()
+{
+
+}
+
+void UDefaultAIAnimInstance::AnimNotify_AttackEnd()
+{
+	AAIPawn* AIPawn = Cast<AAIPawn>(TryGetPawnOwner());
+
+	if (IsValid(AIPawn))
+	{
+		AIPawn->SetAttackEnd(true);
+	}
+}

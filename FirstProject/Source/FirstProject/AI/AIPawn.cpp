@@ -13,6 +13,10 @@ AAIPawn::AAIPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	mAttackEnd = false;
+	// Controller의 Yaw 회전에 매칭한다.
+	//bUseControllerRotationYaw = true;
+
 	mBody = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Body"));
 	mMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	mMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Movement"));

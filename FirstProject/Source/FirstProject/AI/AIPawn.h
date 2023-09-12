@@ -35,6 +35,7 @@ protected:
 	// 스폰 포인트를 이용해서 생성한 객체가 아닐 경우 None이 들어가 있다.
 	TObjectPtr<class AAISpawnPoint> mSpawnPoint;
 
+	bool mAttackEnd;
 
 protected:
 	// Called when the game starts or when spawned
@@ -67,6 +68,16 @@ public:
 	float GetCapsuleRadius() const
 	{
 		return mBody->GetScaledCapsuleRadius();
+	}
+
+	bool GetAttackEnd() const
+	{
+		return mAttackEnd;
+	}
+
+	void SetAttackEnd(bool AttackEnd)
+	{
+		mAttackEnd = AttackEnd;
 	}
 
 	void SetSpawnPoint(class AAISpawnPoint* SpawnPoint);

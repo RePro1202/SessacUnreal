@@ -2,8 +2,8 @@
 
 
 #include "BTTask_MoveInteraction.h"
-#include "../AIPawn.h"
 #include "AIController.h"
+#include "../AIPawn.h"
 #include "../DefaultAIAnimInstance.h"
 #include "../AIStateComponent.h"
 
@@ -91,6 +91,15 @@ void UBTTask_MoveInteraction::TickTask(UBehaviorTreeComponent& OwnerComp, uint8*
 
 		return;
 	}
+
+	// 현재 이동 방향을 향하도록 AI를 회전시킨다.
+	FVector Dir = AIPawn->GetMovementComponent()->Velocity;
+	Dir.Z = 0.f;
+
+	// Dir은 현재 크기까지 가지고 있다. 그러므로 방향만 남기기 위해서 벡터를 정규화 시켜준다.
+	Dir.Normalize();
+
+	AIPawn->SetActorRotation(FRotator(0.0, Dir.Rotation().Yaw, 0.0));
 
 	// 타겟과 AI폰과의 거리를 구한다.
 	FVector	AILoc = AIPawn->GetActorLocation();
