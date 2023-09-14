@@ -64,6 +64,14 @@ void AAIPawn::Tick(float DeltaTime)
 
 }
 
+void AAIPawn::SetPatrolPointArray(const TArray<TObjectPtr<class APatrolPoint>>& Array)
+{
+}
+
+void AAIPawn::NextPatrol()
+{
+}
+
 void AAIPawn::SetCollisionProfile(const FName& Name)
 {
 	mBody->SetCollisionProfileName(Name);

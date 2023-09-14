@@ -40,6 +40,14 @@ protected:
 	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	EIdentificationType mIFFType;
 
+
+	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	TArray<TObjectPtr<class APatrolPoint>> mPatrolPointArray;
+
+	TArray<FVector> mPatrolPoint;
+	int32 mPatrolIndex;
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -52,6 +60,19 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	bool GetPatrolEnable() const 
+	{
+		return !mPatrolPointArray.IsEmpty();
+	}
+
+	const FVector& GetPatrolLocation()
+	{
+		return mPatrolPoint[mPatrolIndex];
+	}
+
+	void SetPatrolPointArray(const TArray<TObjectPtr<class APatrolPoint>>& Array);
+	void NextPatrol();
+
 	const TObjectPtr<class UAIStateComponent>& GetAIState()	const
 	{
 		return mState;
