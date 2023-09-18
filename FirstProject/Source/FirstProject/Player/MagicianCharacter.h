@@ -13,6 +13,9 @@ class FIRSTPROJECT_API AMagicianCharacter : public APlayerCharacter
 {
 	GENERATED_BODY()
 
+private:
+	class ADecalEffect* mDecal;
+
 public:
 	AMagicianCharacter();
 	

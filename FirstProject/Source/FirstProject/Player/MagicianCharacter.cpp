@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "../Effect/DecalEffect.h"
 #include "MagicianCharacter.h"
 #include "../Effect/DefaultEffact.h"
 #include "../Projectile/ProjectileBase.h"
@@ -72,6 +72,24 @@ void AMagicianCharacter::Attack1()
 
 		Effect->SetParticleAsset(TEXT("/Script/Engine.ParticleSystem'/Game/FXVarietyPack/Particles/P_ky_hit1.P_ky_hit1'"));
 		Effect->SetAudioAsset(TEXT("/Script/Engine.SoundWave'/Game/Sound/Fire1.Fire1'"));
+
+
+		FCollisionQueryParams param1(NAME_None, false, this);
+		FHitResult LineResult;
+		bool LineCollision = GetWorld()->LineTraceSingleByChannel(LineResult, result.ImpactPoint, result.ImpactPoint - FVector(0.0, 0.0, 200.0),
+			ECollisionChannel::ECC_GameTraceChannel9, param1);
+
+		if (LineCollision)
+		{
+			ADecalEffect* Decal = GetWorld()->SpawnActor<ADecalEffect>(
+				result.ImpactPoint,
+				FRotator::ZeroRotator, ActorParam);
+
+			Decal->SetDecalMaterial(TEXT("/Script/Engine.MaterialInstanceConstant'/Game/Megascans/Decals/Blood_Stain_sheuec0c/MI_Blood_Stain_sheuec0c_8K.MI_Blood_Stain_sheuec0c_8K'"));
+
+			// 액터의 생명주기를 지정한다. 5.f를 지정하면 생성되고 5초 뒤에 제거됨.
+			Decal->SetLifeSpan(5.f);
+		}
 	}
 
 }
