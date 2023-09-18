@@ -26,10 +26,12 @@ AProjectileBase::AProjectileBase()
 	mMovement->ProjectileGravityScale = 0.1f;
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Script/Engine.StaticMesh'/Game/TestBlueprint/Sphere1.Sphere1'"));
-
 	if (MeshAsset.Succeeded())
 		mMesh->SetStaticMesh(MeshAsset.Object);
 
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialAsset(TEXT("/Script/Engine.MaterialInstanceConstant'/Game/Materials/MIDefaultGlow.MIDefaultGlow'"));
+	if (MaterialAsset.Succeeded())
+		mMesh->SetMaterial(0, MaterialAsset.Object);
 
 }
 
