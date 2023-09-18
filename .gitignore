@@ -97,5 +97,10 @@ DerivedDataCache/*
 */Content/FXVarietyPack
 */Content/sA_Megapack_v1
 */Content/ParagonSerath
-*/Content/Goblin
+
+*/Content/Goblin/Animation
+*/Content/Goblin/Maps
+*/Content/Goblin/Mesh
+*/Content/Goblin/Textures
+
 */Content/Demo

@@ -90,6 +90,9 @@ void AMagicianCharacter::Attack1()
 			// 액터의 생명주기를 지정한다. 5.f를 지정하면 생성되고 5초 뒤에 제거됨.
 			Decal->SetLifeSpan(1.f);
 		}
+
+		FDamageEvent DmgEvent;
+		result.GetActor()->TakeDamage(10.f, DmgEvent, GetController(), this);
 	}
 
 }

@@ -32,11 +32,48 @@ AAIPawn::AAIPawn()
 
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 	AIControllerClass = ADefaultAIController::StaticClass();
+
+
+	mHit = false;
+	mHitTimer = 0.f;
 }
 
 void AAIPawn::SetSpawnPoint(AAISpawnPoint* SpawnPoint)
 {
 	mSpawnPoint = SpawnPoint;
+}
+
+float AAIPawn::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float Damage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
+	LOG(TEXT("Damage : %.5f"), Damage);
+
+	mHit = true;
+	mHitTimer = 0.f;
+
+	for (auto& Material : mMaterialArray)
+	{
+		Material->SetVectorParameterValue(TEXT("HitColor"), FVector(1.0, 0.0, 0.0));
+	}
+
+	return Damage;
+}
+
+void AAIPawn::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+
+	// Material Element COunt
+	int32 ElementCount = mMesh->GetNumMaterials();
+
+	for (int32 i = 0; i < ElementCount; i++)
+	{
+		UMaterialInstanceDynamic* Mtl = mMesh->CreateDynamicMaterialInstance(i);
+
+		mMaterialArray.Add(Mtl);
+	}
+
 }
 
 // Called when the game starts or when spawned
@@ -62,6 +99,19 @@ void AAIPawn::Tick(float DeltaTime)
 
 	//AddMovementInput(GetActorForwardVector());
 
+	if (mHitTimer >= 1.f)
+	{
+		for (auto& Material : mMaterialArray)
+		{
+			Material->SetVectorParameterValue(TEXT("HitColor"), FVector(1.0, 1.0, 1.0));
+		}
+
+		mHit = false;
+	}
+	if (mHit)
+	{
+		mHitTimer += DeltaTime;
+	}
 }
 
 void AAIPawn::SetCollisionProfile(const FName& Name)

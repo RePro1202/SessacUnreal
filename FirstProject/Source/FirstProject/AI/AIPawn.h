@@ -40,7 +40,18 @@ protected:
 	UPROPERTY(Category = Component, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	EIdentificationType mIFFType;
 
+	TArray<TObjectPtr<UMaterialInstanceDynamic>> mMaterialArray;
+
+	bool mHit;
+	float mHitTimer;
+
+public:
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+
 protected:
+	virtual void OnConstruction(const FTransform& Transform);
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
