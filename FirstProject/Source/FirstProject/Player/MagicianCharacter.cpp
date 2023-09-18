@@ -85,10 +85,10 @@ void AMagicianCharacter::Attack1()
 				result.ImpactPoint,
 				FRotator::ZeroRotator, ActorParam);
 
-			Decal->SetDecalMaterial(TEXT("/Script/Engine.MaterialInstanceConstant'/Game/Megascans/Decals/Blood_Stain_sheuec0c/MI_Blood_Stain_sheuec0c_8K.MI_Blood_Stain_sheuec0c_8K'"));
+			Decal->SetDecalMaterial(TEXT("/Script/Engine.Material'/Game/Megascans/Decals/Blood_Stain_sheuec0c/CustomBlood.CustomBlood'"));
 
 			// 액터의 생명주기를 지정한다. 5.f를 지정하면 생성되고 5초 뒤에 제거됨.
-			Decal->SetLifeSpan(5.f);
+			Decal->SetLifeSpan(1.f);
 		}
 	}
 

@@ -19,6 +19,18 @@ protected:
 	UPROPERTY(Category = Component, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UDecalComponent> mDecal;
 
+	TObjectPtr<UMaterialInstanceDynamic> mDecalMaterial;
+
+	float mTime;
+
+	UPROPERTY(Category = Data, EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	bool mFadeEnable;
+
+public:
+	void SetFadeEnable(bool Enable)
+	{
+		mFadeEnable = Enable;
+	}
 
 protected:
 	// Called when the game starts or when spawned
