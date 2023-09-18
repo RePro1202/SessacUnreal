@@ -52,12 +52,30 @@ float AAIPawn::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, A
 	mHit = true;
 	mHitTimer = 0.f;
 
+	if (!mHitTimerHandel.IsValid())
+	{
+
+		GetWorld()->GetTimerManager().SetTimer(mHitTimerHandel, this, &AAIPawn::HitTimer, 0.2f);
+	}
+
 	for (auto& Material : mMaterialArray)
 	{
 		Material->SetVectorParameterValue(TEXT("HitColor"), FVector(1.0, 0.0, 0.0));
 	}
 
 	return Damage;
+}
+
+void AAIPawn::HitTimer()
+{
+	mHit = true;
+
+	for (auto& Material : mMaterialArray)
+	{
+		Material->SetVectorParameterValue(TEXT("HitColor"), FVector(1.0, 1.0, 1.0));
+	}
+
+	GetWorld()->GetTimerManager().ClearTimer(mHitTimerHandel);
 }
 
 void AAIPawn::OnConstruction(const FTransform& Transform)
@@ -99,19 +117,19 @@ void AAIPawn::Tick(float DeltaTime)
 
 	//AddMovementInput(GetActorForwardVector());
 
-	if (mHitTimer >= 1.f)
-	{
-		for (auto& Material : mMaterialArray)
-		{
-			Material->SetVectorParameterValue(TEXT("HitColor"), FVector(1.0, 1.0, 1.0));
-		}
-
-		mHit = false;
-	}
-	if (mHit)
-	{
-		mHitTimer += DeltaTime;
-	}
+	//if (mHitTimer >= 1.f)
+	//{
+	//	for (auto& Material : mMaterialArray)
+	//	{
+	//		Material->SetVectorParameterValue(TEXT("HitColor"), FVector(1.0, 1.0, 1.0));
+	//	}
+	//
+	//	mHit = false;
+	//}
+	//if (mHit)
+	//{
+	//	mHitTimer += DeltaTime;
+	//}
 }
 
 void AAIPawn::SetCollisionProfile(const FName& Name)

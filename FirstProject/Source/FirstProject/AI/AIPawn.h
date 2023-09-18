@@ -45,9 +45,13 @@ protected:
 	bool mHit;
 	float mHitTimer;
 
+	FTimerHandle mHitTimerHandel;
+
 public:
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
-
+	
+	UFUNCTION()
+	void HitTimer();
 
 protected:
 	virtual void OnConstruction(const FTransform& Transform);
