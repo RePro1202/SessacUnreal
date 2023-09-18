@@ -122,7 +122,7 @@ void UBTTask_Attack::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemo
 		// 여전히 공격거리 안에 존재할 경우 타켓쪽으로 방향을 전환한다.
 		else
 		{
-			FVector Dir = TargetLoc = AILoc;
+			FVector Dir = TargetLoc - AILoc;
 			Dir.Z = 0.0;
 
 			Dir.Normalize();
