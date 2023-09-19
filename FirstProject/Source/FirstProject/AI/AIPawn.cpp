@@ -82,7 +82,7 @@ void AAIPawn::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-	// Material Element COunt
+	// Material Element Count
 	int32 ElementCount = mMesh->GetNumMaterials();
 
 	for (int32 i = 0; i < ElementCount; i++)
@@ -92,6 +92,9 @@ void AAIPawn::OnConstruction(const FTransform& Transform)
 		mMaterialArray.Add(Mtl);
 	}
 
+	mMesh->bRenderCustomDepth = true;
+	// 0 ~ 255 사이의 원하는 값.
+	mMesh->SetCustomDepthStencilValue(10);
 }
 
 // Called when the game starts or when spawned
