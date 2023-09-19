@@ -41,6 +41,10 @@ APlayerCharacter::APlayerCharacter()
 	//GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+
+	GetMesh()->bRenderCustomDepth = true;
+	GetMesh()->SetCustomDepthStencilValue(0);
 }
 
 // Called when the game starts or when spawned

@@ -36,6 +36,10 @@ AAIPawn::AAIPawn()
 
 	mHit = false;
 	mHitTimer = 0.f;
+
+	mMesh->bRenderCustomDepth = true;
+	// 0 ~ 255 사이의 원하는 값.
+	mMesh->SetCustomDepthStencilValue(0);
 }
 
 void AAIPawn::SetSpawnPoint(AAISpawnPoint* SpawnPoint)
@@ -91,10 +95,7 @@ void AAIPawn::OnConstruction(const FTransform& Transform)
 
 		mMaterialArray.Add(Mtl);
 	}
-
-	mMesh->bRenderCustomDepth = true;
-	// 0 ~ 255 사이의 원하는 값.
-	mMesh->SetCustomDepthStencilValue(10);
+	
 }
 
 // Called when the game starts or when spawned
