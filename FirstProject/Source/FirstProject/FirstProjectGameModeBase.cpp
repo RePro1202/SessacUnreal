@@ -5,6 +5,7 @@
 #include "Player/MagicianCharacter.h"
 #include "Player/SAC1PlayerState.h"
 #include "SAC1GameState.h"
+#include "Player/SACPlayerController.h"
 #include "AI/AIPawn.h"
 
 AFirstProjectGameModeBase::AFirstProjectGameModeBase()
@@ -25,6 +26,8 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 	PlayerStateClass = ASAC1PlayerState::StaticClass();
 
 	GameStateClass = ASAC1GameState::StaticClass();
+
+	PlayerControllerClass = ASACPlayerController::StaticClass();
 }
 
 void AFirstProjectGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
