@@ -40,6 +40,8 @@ AAIPawn::AAIPawn()
 	mMesh->bRenderCustomDepth = true;
 	// 0 ~ 255 사이의 원하는 값.
 	mMesh->SetCustomDepthStencilValue(0);
+
+	mDissolveParam = 2.f;
 }
 
 void AAIPawn::SetSpawnPoint(AAISpawnPoint* SpawnPoint)
