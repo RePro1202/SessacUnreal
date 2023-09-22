@@ -4,6 +4,7 @@
 #include "PlayerCharacter.h"
 #include "PlayerAnimInstance.h"
 #include "SAC1PlayerState.h"
+#include "../Material/SACPhysicalMaterial.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -220,4 +221,33 @@ void APlayerCharacter::Attack1()
 
 void APlayerCharacter::Attack2()
 {
+}
+
+void APlayerCharacter::FootInteraction(bool Left)
+{
+	FVector FootLocation;
+
+	if (Left)
+		FootLocation = GetMesh()->GetSocketLocation(TEXT("Foot_L"));
+	else
+		FootLocation = GetMesh()->GetSocketLocation(TEXT("Foot_R"));
+
+	FHitResult result;
+
+	FCollisionQueryParams param(NAME_None, false, this);
+
+	param.bReturnPhysicalMaterial = true;
+
+	bool Collision = GetWorld()->SweepSingleByChannel(
+		result,
+		FootLocation, FootLocation,
+		FQuat::Identity,
+		ECollisionChannel::ECC_Visibility,
+		FCollisionShape::MakeSphere(50.f),
+		param);
+
+	if (Collision)
+	{
+
+	}
 }

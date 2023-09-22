@@ -43,11 +43,5 @@ void AAIGoblinPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (mHit)
-	{
-		mMaterialArray[0]->SetScalarParameterValue(TEXT("DissolveEnable"), 1.f);
-		mMaterialArray[0]->SetScalarParameterValue(TEXT("Dissolve"), mDissolveParam);
 
-		mDissolveParam -= 1.f * DeltaTime;
-	}
 }

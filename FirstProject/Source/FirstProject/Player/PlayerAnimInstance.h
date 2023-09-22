@@ -114,4 +114,11 @@ public:
 
 	UFUNCTION()
 	void AnimNotify_BackRingEnd();
+
+
+	UFUNCTION()
+	void AnimNotify_FootLeft();
+
+	UFUNCTION()
+	void AnimNotify_FootRight();
 };

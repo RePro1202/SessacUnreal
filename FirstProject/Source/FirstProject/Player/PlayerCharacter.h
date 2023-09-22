@@ -75,4 +75,7 @@ public:
 	virtual void Attack1();
 	virtual void Attack2();
 
+public:
+	void FootInteraction(bool Left);
+
 };

@@ -204,3 +204,23 @@ void UPlayerAnimInstance::AnimNotify_BackRingEnd()
 {
 	mTeleportAnimFlag = false;
 }
+
+void UPlayerAnimInstance::AnimNotify_FootLeft()
+{
+	APlayerCharacter* Player = Cast<APlayerCharacter>(TryGetPawnOwner());
+
+	if (IsValid(Player))
+	{
+		Player->FootInteraction(true);
+	}
+}
+
+void UPlayerAnimInstance::AnimNotify_FootRight()
+{
+	APlayerCharacter* Player = Cast<APlayerCharacter>(TryGetPawnOwner());
+
+	if (IsValid(Player))
+	{
+		Player->FootInteraction(false);
+	}
+}
