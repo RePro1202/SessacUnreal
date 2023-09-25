@@ -30,7 +30,7 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 
 	PlayerControllerClass = ASACPlayerController::StaticClass();
 
-	static ConstructorHelpers::FClassFinder<UUserWidget> MainUIClass(TEXT("/Script/CoreUObject.Class'/Script/FirstProject.MainWidget'_C"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> MainUIClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UI/UIMain.UIMain_C'"));
 	if (MainUIClass.Succeeded())
 		mMainUIClass = MainUIClass.Class;
 
@@ -65,8 +65,8 @@ void AFirstProjectGameModeBase::BeginPlay()
 	{
 		mMainWidget = CreateWidget<UMainWidget>(GetWorld(), mMainUIClass);
 
-		if(IsValid(mMainWidget))
-			//mMainWidget->
+		if (IsValid(mMainWidget))
+			mMainWidget->AddToViewport();
 	}
 }
 
