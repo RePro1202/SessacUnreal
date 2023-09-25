@@ -16,7 +16,8 @@ public class FirstProject : ModuleRules
 			"InputCore",
 			"AIModule",
 			"GameplayTasks",
-			"NavigationSystem"
+			"NavigationSystem",
+			"UMG"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

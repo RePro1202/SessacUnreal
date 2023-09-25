@@ -15,6 +15,10 @@ class FIRSTPROJECT_API AFirstProjectGameModeBase : public AGameModeBase
 public:
 	AFirstProjectGameModeBase();
 
+private:
+	TSubclassOf<UUserWidget> mMainUIClass;
+	TObjectPtr<class UMainWidget> mMainWidget;
+
 public:
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage);
 	virtual void InitGameState();

@@ -7,6 +7,7 @@
 #include "SAC1GameState.h"
 #include "Player/SACPlayerController.h"
 #include "AI/AIPawn.h"
+#include "UI/MainWidget.h"
 
 AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 {
@@ -28,6 +29,11 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 	GameStateClass = ASAC1GameState::StaticClass();
 
 	PlayerControllerClass = ASACPlayerController::StaticClass();
+
+	static ConstructorHelpers::FClassFinder<UUserWidget> MainUIClass(TEXT("/Script/CoreUObject.Class'/Script/FirstProject.MainWidget'_C"));
+	if (MainUIClass.Succeeded())
+		mMainUIClass = MainUIClass.Class;
+
 }
 
 void AFirstProjectGameModeBase::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
@@ -54,6 +60,14 @@ void AFirstProjectGameModeBase::PostLogin(APlayerController* NewPlayer)
 void AFirstProjectGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (IsValid(mMainUIClass))
+	{
+		mMainWidget = CreateWidget<UMainWidget>(GetWorld(), mMainUIClass);
+
+		if(IsValid(mMainWidget))
+			//mMainWidget->
+	}
 }
 
 void AFirstProjectGameModeBase::Tick(float DeltaTime)
