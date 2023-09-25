@@ -29,6 +29,10 @@ void AStartGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
 
+	NewPlayer->SetShowMouseCursor(true);
+
+	FInputModeUIOnly input;
+	NewPlayer->SetInputMode(input);
 }
 
 void AStartGameMode::BeginPlay()

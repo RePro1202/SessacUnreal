@@ -16,6 +16,12 @@
 #include "BehaviorTree/BlackboardData.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
+#include "Components/Button.h"
+#include "Components/TextBlock.h"
+#include "Components/ProgressBar.h"
+#include "Blueprint/WidgetBlueprintGeneratedClass.h"
+#include "Animation/WidgetAnimation.h"
+
 #include "UObject/NoExportTypes.h"
 
 // generated해더 위에다 include해야함.
