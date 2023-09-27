@@ -30,7 +30,7 @@ AFirstProjectGameModeBase::AFirstProjectGameModeBase()
 
 	PlayerControllerClass = ASACPlayerController::StaticClass();
 
-	static ConstructorHelpers::FClassFinder<UUserWidget> MainUIClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UI/UIMain.UIMain_C'"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> MainUIClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UI/UI_Main.UI_Main_C'"));
 	if (MainUIClass.Succeeded())
 		mMainUIClass = MainUIClass.Class;
 

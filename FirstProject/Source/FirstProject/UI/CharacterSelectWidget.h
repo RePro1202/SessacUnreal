@@ -13,5 +13,18 @@ UCLASS()
 class FIRSTPROJECT_API UCharacterSelectWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+private:
+	UButton* mStartButton;
+
+public:
+	void EnableStartButton(bool Enable);
+
+public:
+	virtual void NativeConstruct();
+
+private:
+	UFUNCTION()
+	void StartButtonClick();
 	
 };

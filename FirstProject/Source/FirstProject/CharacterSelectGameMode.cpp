@@ -3,6 +3,7 @@
 
 #include "CharacterSelectGameMode.h"
 #include "UI/CharacterSelectWidget.h"
+#include "PlayerSelect/SelectPlayer.h"
 
 ACharacterSelectGameMode::ACharacterSelectGameMode()
 {
@@ -11,6 +12,11 @@ ACharacterSelectGameMode::ACharacterSelectGameMode()
 		mUIClass = WidgetClass.Class;
 
 	DefaultPawnClass = nullptr;
+}
+
+void ACharacterSelectGameMode::EnableStartButton(bool Enable)
+{
+	mWidget->EnableStartButton(Enable);
 }
 
 void ACharacterSelectGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)

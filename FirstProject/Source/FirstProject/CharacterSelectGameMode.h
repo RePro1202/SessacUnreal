@@ -22,6 +22,9 @@ private:
 	TObjectPtr<class UCharacterSelectWidget> mWidget;
 
 public:
+	void EnableStartButton(bool Enable);
+
+public:
 	virtual void InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage);
 	virtual void InitGameState();
 	virtual void PostLogin(APlayerController* NewPlayer);

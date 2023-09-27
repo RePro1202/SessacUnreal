@@ -17,8 +17,9 @@ public class FirstProject : ModuleRules
 			"AIModule",
 			"GameplayTasks",
 			"NavigationSystem",
-			"UMG"
-		});
+			"UMG",
+            "CinematicCamera"
+        });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

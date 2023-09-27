@@ -21,6 +21,8 @@
 #include "Components/ProgressBar.h"
 #include "Blueprint/WidgetBlueprintGeneratedClass.h"
 #include "Animation/WidgetAnimation.h"
+#include "Components/Image.h"
+#include "CameraRig_Rail.h"
 
 #include "UObject/NoExportTypes.h"
 
